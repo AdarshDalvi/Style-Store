@@ -1,0 +1,138 @@
+header{
+    display: flex;
+    align-items: center;
+    background: rgb(244, 244, 244);
+    padding: 0.6em 1.5em 0.3em 1.5em;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(153, 153, 153, 0.7);
+}
+
+img{
+    max-height: 58px;
+}
+
+.nav-wrapper{
+    display: flex;
+    align-items: center;
+}
+
+.icons{
+    color: rgb(51, 51, 51);
+    margin-right: 2em;
+    height: 18px;
+    width: 18px;
+}
+
+.cart{
+    margin-right: 0;
+}
+
+.hamburger-menu{
+    margin-left: 2em;
+    cursor: pointer;
+    display: none;
+}
+
+.hamburger-icon{
+    height: 24px;
+    width: 24px;
+}
+
+/* Nav Styling */
+
+nav{
+    order: -1;
+}
+
+nav a{
+    color: rgb(51, 51, 51);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-left: 3em;
+    text-decoration: none;
+    position: relative;
+}
+
+nav a:last-child{
+    margin-right: 4rem;
+}
+
+nav a::before{
+    content: '';
+    position:absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: rgb(51, 51, 51);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+nav a:hover::before{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.activeLink{
+    border-bottom: 2px solid rgb(51, 51, 51);
+    font-weight: bold;
+    color: black;
+}
+
+.activeLink::before{
+    content: none;
+}
+
+.activeLink:hover::before{
+    content: none;
+}
+
+@media (min-width: 700px){
+    .navHide{
+        display: none;
+    }
+}
+
+@media (max-width: 725px){
+
+    .hamburger-menu{
+        display: block;
+    }
+
+    .icons-wrapper{
+        display: none;
+    }
+    
+    nav{
+        padding-left: 2em;
+        padding-top: 1.5em;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: fixed;
+        right: 0px;
+        top: 77px;
+        border: none;
+        width: 85%;
+        height: 100vh;
+        box-shadow: 2px 0 10px rgba(153, 153, 153, 0.7) inset;
+        background-color: rgba(244, 244, 244,0.95);
+    }
+
+    nav a{
+        margin-left: 0;
+        margin-bottom: 1em;
+    }
+
+    .nav-deactivate{
+        right: -85%;
+    }
+}

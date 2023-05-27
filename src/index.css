@@ -1,0 +1,12 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter',sans-serif;
+}
+
+#root{
+    padding-top: 85px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
