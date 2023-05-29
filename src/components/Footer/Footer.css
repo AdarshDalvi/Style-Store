@@ -2,14 +2,15 @@ footer{
     margin-top: auto;
     text-transform: uppercase;
     padding-top: 1em;
+    min-width: 100%;
     box-shadow: 0 -4px 10px rgba(153, 153, 153, 0.4);
 }
 
-h2{
+footer h2{
     font-size: 0.9rem;
 }
 
-p{
+footer p{
     font-size: 0.65rem;
     color: rgb(61, 61, 61);
     margin-top: 0.6em;
@@ -64,7 +65,7 @@ p{
 }
 
 .right img {
-    max-width: 70%;
+    max-width: 80%;
     min-width: 160px;
 }
 

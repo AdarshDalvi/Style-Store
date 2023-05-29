@@ -12,8 +12,8 @@ header{
     box-shadow: 0 4px 10px rgba(153, 153, 153, 0.4);
 }
 
-img{
-    max-height: 58px;
+.logo{
+    max-height: 3.6rem;
 }
 
 .nav-wrapper{
@@ -121,7 +121,7 @@ nav a:hover::before{
         right: 0px;
         top: 77px;
         border: none;
-        width: 85%;
+        width: 55%;
         height: 100vh;
         box-shadow: 2px 0 10px rgba(153, 153, 153, 0.7) inset;
         background-color: rgba(244, 244, 244,0.95);
@@ -133,6 +133,6 @@ nav a:hover::before{
     }
 
     .nav-deactivate{
-        right: -85%;
+        right: -55%;
     }
 }

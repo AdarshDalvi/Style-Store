@@ -18,7 +18,7 @@ export default function Header() {
     <>
       <header>
         <NavLink to='.'>
-          <img  src="/src/assets/images/main-logo.png" alt="logo-icon" />
+          <img className='logo'  src="/images/main-logo.png" alt="logo-icon" />
         </NavLink>
         <div className='nav-wrapper'>
           <div className='icons-wrapper'>
