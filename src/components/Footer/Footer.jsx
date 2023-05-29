@@ -28,12 +28,12 @@ export default function Footer() {
       </div>
       <div className="bottom">
         <div className="left">
-          <img src="/src/assets/images/main-logo.png" alt="footer logo image" />
+          <img src="/images/main-logo.png" alt="footer logo image" />
           <p>© Stylish Copyrights 2023.</p>
         </div>
         <div className="right">
           <p>Pay Securely With</p>
-          <img src="/src/assets/images/payment.png" alt="" />
+          <img src="/images/payment.png" alt="" />
         </div>
       </div>
     </footer>
