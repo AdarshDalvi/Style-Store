@@ -1,9 +1,14 @@
+.home-container{
+    margin-bottom: 3em;
+}
+/* Discount Coupon  */
+
 .discount-coupon-wrapper{
     position: relative;
     background-color: rgb(241, 241, 241);
     padding: 1em 1.5em 3em;
     width: 85%;
-    margin: 2em auto;
+    margin: 2em auto 0;
 
     .discount-coupon{
         display: flex;
@@ -32,7 +37,7 @@
             letter-spacing: 1px;
             padding: 0.8em 2.2em;
             border: none;
-            border-radius: 6px;
+            border-radius: 4px;
             z-index: 1;
             margin-top: 1.2em;
             margin-right: 3em;
