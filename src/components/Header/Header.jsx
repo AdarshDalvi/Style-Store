@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import './Header.css'
+import React, { useEffect, useState } from 'react'
+import './Header.scss'
 import { NavLink} from 'react-router-dom'
 import { FaUserAlt } from 'react-icons/fa'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
@@ -9,6 +9,19 @@ import { GrFormClose } from 'react-icons/gr'
 export default function Header() {
 
   const [showNavbar, setShowNavbar] = useState(false)
+
+  useEffect(()=>{
+    function watchWindowWidth(){
+      if(window.innerWidth>725){
+        setShowNavbar(prevNavBar=> false)
+      }
+    }
+    window.addEventListener('resize',watchWindowWidth)
+
+    return function(){
+      window.removeEventListener('resize',watchWindowWidth)
+    }
+  })
 
   const showHamburger = () =>{
     setShowNavbar(prevNavBar=> !prevNavBar)

@@ -10,36 +10,35 @@
     display: grid;
     gap: 1rem;
     grid-template: minmax(auto, 16rem) minmax(auto, 16rem)/ 1fr 1fr;
-}
 
-.span2{
-    grid-row: 1/-1;
-    max-height: 670px;
-}
+    .element-container{
+        position: relative;
+        cursor: pointer;
+    }
+    
+    .span2{
+        grid-row: 1/-1;
+        max-height: 670px;
+    }
+    
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 0.9em;
+        object-fit: cover;
+        object-position: center;
+    }
 
-.element1 img{
-    width: 100%;
-    height: 100%;
-    border-radius: 0.9em;
-    object-fit: cover;
-    object-position: center;
-}
-
-
-.element-container{
-    position: relative;
-    cursor: pointer;
+    h1{
+        font-weight: 900;
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
 }
 
 .image1-text,.image2-text, .slider-text{
     position: absolute;
     color: white;
-}
-
-.element1 h1{
-    font-weight: 900;
-    font-size: 2.5rem;
-    margin-bottom: 10px;
 }
 
 .element1 p, .slider-text p{
