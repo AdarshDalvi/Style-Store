@@ -51,8 +51,8 @@
     transition: color 250ms;
 }
 
-.element1 p:hover, .element1 p:focus, .slider-text p:hover{
-    cursor: pointer;
+
+.element-container:hover p, .element1 p:focus, .slider-text p:hover{
     color: rgb(40, 40, 40);
 }
 

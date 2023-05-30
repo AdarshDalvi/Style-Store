@@ -1,0 +1,40 @@
+.product-link{
+    text-decoration: none;
+    color: rgb(47, 47, 47);
+
+    .card-container{
+        .image-container{
+            overflow: hidden;
+            width: 100%;
+            height: 14rem;
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                transition: 0.5s all ease-in-out;
+            }
+        }
+    
+        .card-info-container{
+            margin-top: 0.8em;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            padding: 0 .1em;
+
+        }
+    }
+
+    .image-container img:hover{
+        transform: scale(1.1);
+    }
+    
+}
+
+
+.product-link:hover{
+    text-decoration: underline;
+}
+
