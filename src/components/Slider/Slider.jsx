@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useRef, useState } from 'react'
-import './Banner.scss'
+import './Slider.scss'
 import  {GrFormPrevious, GrFormNext} from 'react-icons/gr'
 
 export default function Banner() {

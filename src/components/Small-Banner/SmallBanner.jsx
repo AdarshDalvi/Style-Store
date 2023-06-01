@@ -1,4 +1,3 @@
-import React from 'react'
 import './SmallBanner.scss'
 import {NavLink} from 'react-router-dom'
 
@@ -6,7 +5,7 @@ export default function SmallBanner() {
   return (
     <div className='small-banner-container'>
 
-        <NavLink to='shop'>
+        <NavLink to='shop/0'>
             <div className='image-container'>
               <div className="overlay"></div>
               <img src="/small-banner/item1.jpg" alt="" />
@@ -17,7 +16,7 @@ export default function SmallBanner() {
             </div>
         </NavLink>
 
-        <NavLink to='shop'>
+        <NavLink to='shop/0'>
             <div className='image-container'>
               <div className="overlay"></div>
               <img src="/small-banner/item2.jpg" alt="" />

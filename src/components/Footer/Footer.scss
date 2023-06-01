@@ -50,22 +50,23 @@ footer{
                 font-size: 0.7rem;
             }
         }
-
-        .right{
-            display: flex;
-            justify-content: flex-end;
-
-            p{
-                display: none;
-                font-weight: 700;
-            }
-
-            img {
-                max-width: 80%;
-                min-width: 160px;
-            }
-        }
         
+    }
+}
+
+.right{
+    display: flex;
+    justify-content: flex-end;
+
+    p{
+        display: none;
+        font-weight: 700;
+        font-size: clamp(0.6rem, 2vw, 0.9rem);
+    }
+
+    img {
+        max-width: 80%;
+        min-width: 160px;
     }
 }
 
