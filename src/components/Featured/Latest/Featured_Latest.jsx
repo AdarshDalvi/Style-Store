@@ -1,4 +1,3 @@
-import React from 'react'
 import ProductCard from '../../ProductCard/ProductCard'
 import { NavLink } from 'react-router-dom'
 import './Featured_Latest.scss'
@@ -8,7 +7,7 @@ export default function Featured_Latest({data, heading}) {
     <div className='featured'>
       <div className='featured-heading'>
         <h1>{heading}</h1>
-        <NavLink to='shop'>
+        <NavLink to='shop/0'>
           <p>view all</p>
         </NavLink>
       </div>
@@ -18,10 +17,7 @@ export default function Featured_Latest({data, heading}) {
             return (
               <ProductCard 
                 key={product.id}
-                id= {product.id}
-                url = {product.url}
-                name = {product.name}
-                price = {product.price}
+                data={product}
               />
             )
           })

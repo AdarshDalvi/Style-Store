@@ -1,0 +1,29 @@
+.input-item{
+    margin-bottom: 1em;
+    color: rgb(32, 32, 32);
+    h3{
+        text-decoration: underline;
+        font-size: clamp(0.9rem,4vw,1.2rem);
+    }
+    label{
+        font-size: clamp(0.6rem,2vw,0.9rem);
+        color: rgb(90, 90, 90);
+        margin-top: 0.5em;
+        cursor: pointer;
+    }
+
+    input[type = range], input[type=radio]{
+        margin-top: 1em;
+    }
+
+    input[type= radio]{
+        margin-right: 0.5em;
+    }
+
+    
+    #priceFilter{
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+}
+

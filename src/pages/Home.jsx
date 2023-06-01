@@ -1,5 +1,4 @@
-import React from 'react'
-import Banner from '../components/Slider/Banner'
+import Banner from '../components/Slider/Slider'
 import './page-CSS/Home.scss'
 import SmallBanner from '../components/Small-Banner/SmallBanner'
 import Featured_Latest from '../components/Featured/Latest/Featured_Latest'
