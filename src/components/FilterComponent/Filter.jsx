@@ -1,39 +1,39 @@
 import './Filter.scss'
 
-export default function Filter({filters, handleOnChange, setCategory, wrapperClass}) {
+export default function Filter({filters, handleOnChange}) {
   return (
-    <div className={wrapperClass}>
+    <div className='other-filters'>
       <div className='input-item'>
         <h3>Categories</h3>
         <input 
-            id='1' 
-            type="radio" 
-            value='All' 
-            name='category'
-            checked={filters.category === 'All'}
-            onChange={handleOnChange}
+          type="radio"
+          id="all"
+          name="category"
+          value="0"
+          checked={filters.category === "0"}
+          onChange={handleOnChange}
         />
-        <label htmlFor="1"> All </label>
+        <label htmlFor="all"> All </label>
         <br />
         <input 
-            id='2' 
-            type="radio" 
-            value='Men' 
-            name='category'
-            checked={filters.category === 'Men'}
-            onChange={handleOnChange}
+          type="radio"
+          id="men"
+          name="category"
+          value="1"
+          checked={filters.category === "1"}
+          onChange={handleOnChange}
         />
-        <label htmlFor="2"> Men </label>
+        <label htmlFor="men"> Men </label>
         <br />
         <input 
-            id='3' 
-            type="radio" 
-            value='Women' 
-            name='category'
-            checked={filters.category === 'Women'}
-            onChange={handleOnChange}
+          type="radio"
+          id="women"
+          name="category"
+          value="2"
+          checked={filters.category === "2"}
+          onChange={handleOnChange}
         />
-        <label htmlFor="3"> Women</label>
+        <label htmlFor="women"> Women</label>
       </div>
       
       <div className="input-item">
