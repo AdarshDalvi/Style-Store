@@ -11,19 +11,19 @@ import isEqual from 'lodash/isEqual';
 export default function Shop() {
 
   const [filters , setFilters ] = useState({
-    category: 'All',
+    category: '0',
     sort: '',
   })
 
   const [searchText,setSearchText] = useState('')
 
   let compare = {
-    category: 'All',
+    category: '0',
     sort: '',
   }
 
   const [tempfilters , setTempFilters ] = useState({
-    category: 'All',
+    category: '0',
     sort: '',
   })
 
@@ -72,6 +72,8 @@ export default function Shop() {
 
   let show = isEqual(compare,tempfilters) 
 
+  console.log(tempfilters)
+
   return (
     <div className='shop-container'>
       <div className='filters'>
@@ -79,7 +81,7 @@ export default function Shop() {
             <div className='search-box-wrapper'>
               <input 
                 className='search-box' 
-                onChange={handleOnChange} 
+                onChange={(e)=>{setSearchText(prevText=> e.target.value)}} 
                 type="text" 
                 placeholder='Search' 
                 name='searchText' 
@@ -101,14 +103,15 @@ export default function Shop() {
               closeModal={closeModal}
               applyFilters={applyFilters}
               >
-              <Filter filters={tempfilters} handleOnChange={handleOnChange} setCategory={setCategory} wrapperClass='mobile-filters'/>
+              <Filter 
+                filters={tempfilters} 
+                handleOnChange={handleOnChange} 
+              />
             </DialogModal>
           }
           <Filter 
             filters={tempfilters} 
             handleOnChange={handleOnChange} 
-            setCategory={setCategory} 
-            wrapperClass='other-filters'
           />
           {!show && <div className="btn-wrapper">
             <button className="clear-btn" onClick={()=>setTempFilters(prevFilters=> compare)}>Clear</button>

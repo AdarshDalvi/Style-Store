@@ -1,4 +1,4 @@
-import ProductCard from '../../ProductCard/ProductCard'
+import ProductCard from '../ProductCard/ProductCard'
 import { NavLink } from 'react-router-dom'
 import './Featured_Latest.scss'
 
