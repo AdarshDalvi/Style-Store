@@ -58,8 +58,6 @@ export default function SingleProduct() {
     setSelectedSize(prevValue=> value)
   }
 
-  console.log(selectedSize)
-
   const sizes= [
     {
       id:0,

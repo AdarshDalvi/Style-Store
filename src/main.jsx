@@ -6,10 +6,8 @@ import {BrowserRouter} from 'react-router-dom'
 import Scrolling from './Scrolling.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Scrolling/>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Scrolling/>
+    <App />
+  </BrowserRouter>
 )

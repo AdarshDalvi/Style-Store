@@ -39,13 +39,6 @@ export default function Shop() {
     })
   }
 
-  function setCategory(value){
-    setTempFilters(prevTempFilters=>({
-      ...prevTempFilters,
-      category: value
-    }))
-  }
-
   function closeModal(){
     setTempFilters(prevFilters=> compare)
     setIsModalOpen(false)
@@ -72,7 +65,6 @@ export default function Shop() {
 
   let show = isEqual(compare,tempfilters) 
 
-  console.log(tempfilters)
 
   return (
     <div className='shop-container'>
