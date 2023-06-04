@@ -2,7 +2,7 @@
 .product-container{
     display: flex;
     width: 90%;
-    margin: 1em auto 3em;
+    margin: 2em auto 3em;
     justify-content: space-between;
     padding: 0 1em;
 
@@ -135,7 +135,7 @@
 
                 button{
                     padding: 1em  1.5em;
-                    border-radius: 6px;
+                    border-radius: 2rem;
                     border: none;
                     font-size: clamp(0.7rem, 2vw, 0.9rem);
                 }
@@ -197,7 +197,7 @@
             align-self: center;
 
             #main-image{
-                height: 50vw;
+                height: 40vw;
             }
         }
 

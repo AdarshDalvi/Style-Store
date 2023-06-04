@@ -58,8 +58,6 @@ export default function SingleProduct() {
     setSelectedSize(prevValue=> value)
   }
 
-  console.log(selectedSize)
-
   const sizes= [
     {
       id:0,
@@ -126,7 +124,7 @@ export default function SingleProduct() {
       </div>
       <div className='product-info'>
         <h2>Nike Running Shoes</h2>
-        <p className='price'>Price : $50</p>
+        <p className='price'>MRP : $50</p>
         <p className='inc'>{`(incl. of taxes)`}</p>
         <div className='size'>
           <p>Select Size :</p>
