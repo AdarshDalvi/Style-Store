@@ -1,0 +1,53 @@
+.fav-card-container{
+    text-align: center;
+    border: 1px solid rgb(212, 212, 212);
+    padding-bottom: 0.8em;
+    
+    .product-image{
+        max-height: 300px;
+        position: relative;
+
+        .overlay-box{
+            position: absolute;
+            inset: 0;
+            background-color: rgba($color: #000000, $alpha: 0.1);
+        }
+
+        .delete-icon{
+            position: absolute;
+            top: 6%;
+            right: 6%;
+            font-size: 1.2rem;
+        }
+
+        img{
+            object-fit: cover;
+            width: 100%;
+            max-height: inherit;
+        }
+    }
+
+    h3{
+        margin-top: 0.7em;
+        font-size: clamp(0.9rem, 3vw, 1.2rem);
+    }
+
+    p{
+        font-size: clamp(0.7rem, 2vw, 0.9rem);
+        font-weight: 500;
+        margin-top: 0.4em;
+        padding-bottom: 0.8em;
+        border-bottom: 1px solid rgb(212, 212, 212);
+    }
+
+    .add-to-cart{
+        margin-top: 0.8em;
+        width: 80%;
+        border: none;
+        background-color: #000000;
+        color: white;
+        padding: 0.7em 1.5em;
+        font-weight: 500;
+        border-radius: 4px;
+    }
+}
