@@ -3,7 +3,7 @@ import Home from './pages/Home'
 import Shop from './pages/Shop'
 import SingleProduct from './pages/SingleProduct'
 import About from './pages/About'
-import Account from './pages/Account'
+import Favorite from './pages/Favorite'
 import Cart from './pages/Cart'
 import Contact from './pages/Contact'
 import Layout from './components/Layout'
@@ -19,6 +19,7 @@ function App() {
           <Route path='shop/:categoryId' element={<Shop/>}/>
           <Route path='product/:id' element={<SingleProduct/>}/>
           <Route path='about' element={<About/>}/>
+          <Route path='favorite' element={<Favorite/>}/>
           <Route path='cart' element={<Cart/>}/>
           <Route path='contact' element={<Contact/>}/>
         </Route>
