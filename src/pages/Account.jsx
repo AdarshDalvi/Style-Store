@@ -1,8 +1,9 @@
+import './page-CSS/Account.scss'
 
 export default function Account() {
   return (
-    <div>
-      <h2>This is account</h2>
+    <div className="account-wrapper">
+      
     </div>
   )
 }

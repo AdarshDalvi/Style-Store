@@ -19,7 +19,6 @@ function App() {
           <Route path='shop/:categoryId' element={<Shop/>}/>
           <Route path='product/:id' element={<SingleProduct/>}/>
           <Route path='about' element={<About/>}/>
-          <Route path='account' element={<Account/>}/>
           <Route path='cart' element={<Cart/>}/>
           <Route path='contact' element={<Contact/>}/>
         </Route>
