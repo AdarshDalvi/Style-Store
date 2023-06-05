@@ -2,42 +2,31 @@ import Banner from '../components/Slider/Slider'
 import './page-CSS/Home.scss'
 import SmallBanner from '../components/Small-Banner/SmallBanner'
 import Featured_Latest from '../components/Featured/Featured_Latest'
+import { useEffect, useState } from 'react'
+import {getAllProducts} from '../utils/api'
 
 export default function Home() {
 
+  const [products, setData] = useState(null)
+  const [loading, setLoading] = useState(false)
 
-  const featuredData = [
-    { 
-      id: 1,
-      url: '/products/card-item1.jpg',
-      name : 'Nike Running Shoes',
-      price: 30
-    },
-    { 
-      id:2,
-      url: '/products/card-item2.jpg',
-      name : 'Nike Running Shoes',
-      price: 40
-    },
-    {
-      id:3,
-      url: '/products/card-item3.jpg',
-      name : 'Nike Running Shoes',
-      price: 30
-    },
-    {
-      id:4,
-      url: '/products/card-item1.jpg',
-      name : 'Nike Running Shoes',
-      price: 50
-    },
-    {
-      id:5,
-      url: '/products/card-item2.jpg',
-      name : 'Nike Running Shoes',
-      price: 30
-    },
-  ]
+  useEffect(()=>{
+    getProducts();
+  },[])
+
+
+  const getProducts= async()=>{
+    try{
+      setLoading(true)
+      const {data} = await getAllProducts('/products?populate=*')
+      setData(prevProducts=>data) 
+      setLoading(false)
+    }catch(e){
+      setLoading(false)
+      console.log(e.message)
+    }
+  }
+
   return (
     <div className='home-container'>
       <Banner/>
@@ -51,9 +40,9 @@ export default function Home() {
         </div>
         <h1><span>10</span>% OFF</h1>
       </div>
-      <Featured_Latest data={featuredData} heading='Featured products'/>
+      <Featured_Latest data={products} heading='Featured products'/>
       <SmallBanner/>
-      <Featured_Latest data={featuredData} heading='Latest products'/>
+      <Featured_Latest data={products} heading='Latest products'/>
     </div>
   )
 }

@@ -1,55 +1,50 @@
 import './page-CSS/SingleProduct.scss'
 import Featured_Latest from '../components/Featured/Featured_Latest'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { getAllProducts } from '../utils/api'
+import { useParams } from 'react-router-dom'
 
 
 export default function SingleProduct() {
-  const data = [
-    { 
-      id: 1,
-      url: '/products/card-item1.jpg',
-      name : 'Nike Running Shoes',
-      price: 30,
-      categoty: 0
-    },
-    { 
-      id:2,
-      url: '/products/card-item2.jpg',
-      name : 'Nike Running Shoes',
-      price: 40,
-      categoty: 1
-    },
-    {
-      id:3,
-      url: '/products/card-item3.jpg',
-      name : 'Nike Running Shoes',
-      price: 30,
-      categoty: 2
-    },
-    {
-      id:4,
-      url: '/products/card-item1.jpg',
-      name : 'Nike Running Shoes',
-      price: 50,
-      categoty: 0
-    },
-    {
-      id:5,
-      url: '/products/card-item2.jpg',
-      name : 'Nike Running Shoes',
-      price: 30,
-      categoty: 1
+
+  const [loading, setLoading] = useState(false)
+  const [productDetails, setProductDetails] = useState(null)
+  const [imageData, setImageData] = useState(null)
+  const [shoeSizes, setShoesSizes] = useState(null)
+
+  const {slug} = useParams()
+  
+  useEffect(()=>{
+    getProductDetails()
+  },[])
+
+  const getProductDetails = async()=>{
+    try{
+      setLoading(true)
+      const {data} = await getAllProducts(`/products?filters[slug][$eq]=${slug}&populate=*`)
+      const product = data[0]?.attributes
+      setProductDetails(prevDetails=> product)
+      setImageData(prevData=>{
+        return product.product_image.data?.map(image=>{
+          return image.attributes.url
+        })
+      })
+      setShoesSizes(prevSizes=>{
+        return product.size.data?.map(size=>{
+          return size
+        })
+      })
+      setLoading(false)
+    }catch(e){
+      setLoading(false)
+      console.log(e.message)
     }
-  ]
+  }
+
+  console.log(productDetails)
 
   const [selectedImage, setSelectedImage] = useState(0)
-
-  const images= [
-    '/single-product/p1.png',
-    '/single-product/p2.png',
-    '/single-product/p3.png'
-  ]
 
   const [selectedSize, setSelectedSize] = useState('')
 
@@ -58,90 +53,44 @@ export default function SingleProduct() {
     setSelectedSize(prevValue=> value)
   }
 
-  const sizes= [
-    {
-      id:0,
-      size: 'UK 4',
-      isAvailable : false
-    },
-    {
-      id:1,
-      size: 'UK 5',
-      isAvailable : false
-    },
-    {
-      id:2,
-      size: 'UK 6',
-      isAvailable : true
-    },
-    {
-      id:3,
-      size: 'UK 7',
-      isAvailable : true
-    },
-    {
-      id:4,
-      size: 'UK 8',
-      isAvailable : true
-    },
-    {
-      id:5,
-      size: 'UK 9',
-      isAvailable : true
-    },
-    {
-      id:6,
-      size: 'UK 10',
-      isAvailable : true
-    },
-    {
-      id:7,
-      size: 'UK 11',
-      isAvailable : false
-    }
-  ]
-
   const isSizeNotSelected = selectedSize===''
   return (
-    <div className='product-container'>
-      <h2 className='mobile-heading'>Nike Running Shoes</h2>
+    loading? <h3>Loading...</h3>
+    :<div className='product-container'>
+      <h2 className='mobile-heading'>{productDetails?.name}</h2>
       <div className='product-images'>
         <div className='all-product-images'>
-          <div className='image-wrapper' onClick={()=>setSelectedImage(0)}>
-            {selectedImage === 0 && <div className='image-overlay'></div>}
-            <img  src={images[0]} alt='' />
-          </div>
-          <div className='image-wrapper' onClick={()=>setSelectedImage(1)}>
-            {selectedImage === 1 && <div className='image-overlay'></div>}
-            <img  src={images[1]} alt='' />
-          </div>
-          <div className='image-wrapper' onClick={()=>setSelectedImage(2)}>
-            {selectedImage === 2 && <div className='image-overlay'></div>}
-            <img  src={images[2]} alt='' />
-          </div>
+          {
+            imageData?.map((url, index)=>(
+              <div key={index} className='image-wrapper' onClick={()=>setSelectedImage(index)}>
+                {selectedImage === index && <div className='image-overlay'></div>}
+                <img  src={url} alt='' />
+              </div>
+            ))
+          }
         </div>
-        <img id='main-image' src={images[selectedImage]} alt="" />
+        <img id='main-image' src={imageData?.[selectedImage]} alt="" />
       </div>
       <div className='product-info'>
-        <h2>Nike Running Shoes</h2>
-        <p className='price'>MRP : $50</p>
+        <h2>{productDetails?.name}</h2>
+        <p className='price'>MRP : ${productDetails?.price}</p>
         <p className='inc'>{`(incl. of taxes)`}</p>
         <div className='size'>
           <p>Select Size :</p>
           <div className='size-grid'>
             {
-              sizes.map(size=>(
+              shoeSizes?.map((size,index)=>(
                 <label 
-                  key={size.id} 
-                  htmlFor={size.id} 
-                  className={`size-box ${!size.isAvailable? 'not-avail':null} ${size.size === selectedSize && 'active-size'}`}
+                  key={index} 
+                  htmlFor={index} 
+                  className={`size-box ${!size.enabled? 'not-avail':null} ${size.size === selectedSize && 'active-size'}`}
                 >
                   {size.size}
                   <input 
                     type="radio" 
                     name='selectedSize'
                     value={size.size}
-                    id={size.id}
+                    id={index}
                     checked={selectedSize === size.size}
                     onChange={handleOnChange}
                   />
@@ -159,11 +108,7 @@ export default function SingleProduct() {
           Product Details
         </h3>
         <p className='product-details'>
-          Every time the AJ1 gets a remake, you get the classic 
-          sneaker in new colours and textures for an exciting, 
-          revamped look but with all the familiar comforts you 
-          know. Premium materials and accents give modern 
-          expression to an all-time favourite.
+          {productDetails?.description}
         </p>
       </div>
     </div>

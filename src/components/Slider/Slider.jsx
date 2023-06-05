@@ -9,11 +9,11 @@ export default function Banner() {
 
   const slides = [
     { 
-      url: '/images/slider/image1.jpg',
+      url: '/images/slider/image02.webp',
       topText: 'Stylish shoes for Women'
     },
     { 
-      url: '/images/slider/image2.jpg',
+      url: '/images/slider/image01.webp',
       topText: 'Sports Wear'
     },
     { 

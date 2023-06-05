@@ -8,22 +8,23 @@ import Filter from '../components/FilterComponent/Filter'
 import DialogModal from '../components/DialogModal/DialogModal'
 import isEqual from 'lodash/isEqual';
 
+
 export default function Shop() {
 
   const [filters , setFilters ] = useState({
-    category: '0',
+    category: '6',
     sort: '',
   })
 
   const [searchText,setSearchText] = useState('')
 
   let compare = {
-    category: '0',
+    category: '6',
     sort: '',
   }
 
   const [tempfilters , setTempFilters ] = useState({
-    category: '0',
+    category: '6',
     sort: '',
   })
 
@@ -48,6 +49,8 @@ export default function Shop() {
     setFilters(prevFilters=> tempfilters)
     setIsModalOpen(false)
   }
+
+  console.log(filters)
 
   useEffect(()=>{
     function watchWidth(){

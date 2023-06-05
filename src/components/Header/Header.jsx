@@ -11,6 +11,7 @@ export default function Header() {
 
   const [showNavbar, setShowNavbar] = useState(false)
 
+
   useEffect(()=>{
     function watchWindowWidth(){
       if(window.innerWidth>725){
@@ -42,7 +43,7 @@ export default function Header() {
           </div>
           <nav className={!showNavbar?'nav-deactivate':null}>
             <NavLink to='.' onClick={()=>setShowNavbar(prevValue=>false)} className={({isActive}) => isActive ? 'activeLink' : null}>Home</NavLink>
-            <NavLink to='shop/0' onClick={()=>setShowNavbar(prevValue=>false)} className={({isActive}) => isActive ? 'activeLink' : null}>Shop</NavLink>
+            <NavLink to='products' onClick={()=>setShowNavbar(prevValue=>false)} className={({isActive}) => isActive ? 'activeLink' : null}>Shop</NavLink>
             {showNavbar&& <NavLink to='favorite' onClick={()=>setShowNavbar(prevValue=>false)} className={({isActive}) => isActive ? 'activeLink' : null}>Favorite</NavLink>}
             <NavLink to='about' onClick={()=>setShowNavbar(prevValue=>false)} className={({isActive}) => isActive ? 'activeLink' : null}>About</NavLink>
             <NavLink to='contact' onClick={()=>setShowNavbar(prevValue=>false)} className={({isActive}) => isActive ? 'activeLink' : null}>Contact</NavLink>

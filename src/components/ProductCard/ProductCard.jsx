@@ -1,15 +1,16 @@
 import './ProductCard.scss'
 import { NavLink } from 'react-router-dom'
 
-export default function ProductCard({data ,className=''}) {
+
+export default function ProductCard({data:{attributes: product, id } ,className=''}) {
   return (
-    <NavLink to={`/product/${data.id}`} className={`product-link ${className}`}>
+    <NavLink to={`/product/${product.slug}`} className={`product-link ${className}`}>
       <div className='image-container'>
-        <img src={data.url} alt="product image" />
+        <img src={product.product_thumbnail.data.attributes.url} alt="product image" />
       </div>
       <div className='card-info-container'>
-          <p className='product-name'>{data.name}</p>
-          <p className='price'>${data.price}</p>
+          <p className='product-name'>{product.name}</p>
+          <p className='price'>${product.price}</p>
       </div>
     </NavLink>
   )
