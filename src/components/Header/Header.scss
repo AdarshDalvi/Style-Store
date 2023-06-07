@@ -2,7 +2,7 @@ header{
     display: flex;
     align-items: center;
     background: white;
-    padding: 0.6em 1.5em 0.3em 1.5em;
+    padding: 0.6em 2.5em 0.3em 1.5em;
     position: fixed;
     z-index: 100;
     top: 0;
@@ -20,14 +20,37 @@ header{
 }
 
 .logo{
+    height: clamp(40px, 12vw, 50px);
+    min-height: 40px;
     max-height: 50px;
 }
 
-.icons{
-    color: rgb(51, 51, 51);
+// .icons{
+//     color: rgb(51, 51, 51);
+//     margin-right: 2em;
+//     height: 18px;
+//     width: 18px;
+// }
+
+.icon-wrapper{
     margin-right: 2em;
-    height: 18px;
-    width: 18px;
+    position: relative;
+    
+    a{
+        color: rgb(51, 51, 51);
+        font-size: 1.2rem;
+    }
+
+    span{
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: red;
+        color: white;
+        padding: 0.2em 0.5em;
+        border-radius: 50%;
+        font-size: 0.55rem;
+    }
 }
 
 .cart{
@@ -35,7 +58,6 @@ header{
 }
 
 .hamburger-menu{
-    margin-left: 2em;
     cursor: pointer;
     display: none;
 
@@ -61,7 +83,7 @@ nav{
     }
 
     a:last-child{
-        margin-right: 4rem;
+        margin-right: 2.5rem;
     }
     a::before{
         content: '';
@@ -95,16 +117,28 @@ nav{
 
 @media (max-width: 725px){
 
+    header{
+        padding-right: 1em;
+    }
+
     .hamburger-menu{
         display: block;
     }
 
-    .account{
-        display: none;
-    }
+    // .favorite{
+    //     display: none;
+    // }
 
-    .cart{
-        margin-left: 1em;
+    // .cart{
+    //     margin-left: 1em;
+    // }
+
+    .icon-wrapper{
+        margin-right: 1em;
+
+        .cart{
+            margin-right: 0;
+        }
     }
     
     nav{
@@ -117,7 +151,7 @@ nav{
         position: fixed;
         left: 3%;
         right: 3%;
-        top: 68.39px;
+        top: clamp(58.39px, 17.25vw, 68.39px);
         border: none;
         border-bottom-left-radius: 4px;
         border-bottom-right-radius: 4px;

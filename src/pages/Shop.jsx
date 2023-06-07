@@ -50,7 +50,6 @@ export default function Shop() {
     setIsModalOpen(false)
   }
 
-  console.log(filters)
 
   useEffect(()=>{
     function watchWidth(){

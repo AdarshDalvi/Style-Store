@@ -1,10 +1,15 @@
 import './page-CSS/SingleProduct.scss'
-import Featured_Latest from '../components/Featured/Featured_Latest'
 import { useEffect, useState } from 'react'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
 import { getAllProducts } from '../utils/api'
 import { useParams } from 'react-router-dom'
-
+import {useSelector, useDispatch} from 'react-redux'
+import {addToCart} from '../redux/cartSlice'
+import { addToFavrite, removeFromFavorite } from '../redux/favoriteSlice'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { nanoid } from '@reduxjs/toolkit'
 
 export default function SingleProduct() {
 
@@ -19,19 +24,22 @@ export default function SingleProduct() {
     getProductDetails()
   },[])
 
+  const dispatch = useDispatch() 
+  const favorites = useSelector(state=>state.favorite.favorites)
+
   const getProductDetails = async()=>{
     try{
       setLoading(true)
       const {data} = await getAllProducts(`/products?filters[slug][$eq]=${slug}&populate=*`)
-      const product = data[0]?.attributes
+      const product = data?.[0]
       setProductDetails(prevDetails=> product)
       setImageData(prevData=>{
-        return product.product_image.data?.map(image=>{
+        return product?.attributes.product_image.data?.map(image=>{
           return image.attributes.url
         })
       })
       setShoesSizes(prevSizes=>{
-        return product.size.data?.map(size=>{
+        return product?.attributes.size.data?.map(size=>{
           return size
         })
       })
@@ -42,22 +50,54 @@ export default function SingleProduct() {
     }
   }
 
-  console.log(productDetails)
+  const notify = (message)=>{
+    toast.success(message, {
+      position: "top-center",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });
+  }
 
   const [selectedImage, setSelectedImage] = useState(0)
 
   const [selectedSize, setSelectedSize] = useState('')
+  const [isSizeNotSelected, setIsSizeNotSelcted] = useState(selectedSize!=='')
 
   function handleOnChange(event){
     const {value} = event.target
     setSelectedSize(prevValue=> value)
+    setIsSizeNotSelcted(false)
   }
 
-  const isSizeNotSelected = selectedSize===''
+  const handleAddToCart  = ()=>{
+    if(selectedSize!==''){
+      dispatch(addToCart({...productDetails, selectedSize, oneQuantityPrice: productDetails?.attributes.price, cartItemId: nanoid()}))
+      notify('Product Added to Cart!')
+    }else{
+      setIsSizeNotSelcted(true)
+    }  
+  }
+
+  const handleAddToFavorite =() =>{
+    dispatch(addToFavrite({...productDetails, selectedSize, favItemId: nanoid()}))
+    notify('Product Added to Favorites!')
+  }
+
+  const handleRemoveFromFavorite = ()=>{
+    dispatch(removeFromFavorite({id: productDetails?.id}))
+    notify('Product Removed from Favorites!')
+  }
+
   return (
     loading? <h3>Loading...</h3>
     :<div className='product-container'>
-      <h2 className='mobile-heading'>{productDetails?.name}</h2>
+      <ToastContainer/>
+      <h2 className='mobile-heading'>{productDetails?.attributes.name}</h2>
       <div className='product-images'>
         <div className='all-product-images'>
           {
@@ -72,8 +112,8 @@ export default function SingleProduct() {
         <img id='main-image' src={imageData?.[selectedImage]} alt="" />
       </div>
       <div className='product-info'>
-        <h2>{productDetails?.name}</h2>
-        <p className='price'>MRP : ${productDetails?.price}</p>
+        <h2>{productDetails?.attributes.name}</h2>
+        <p className='price'>MRP : ${productDetails?.attributes.price}</p>
         <p className='inc'>{`(incl. of taxes)`}</p>
         <div className='size'>
           <p>Select Size :</p>
@@ -101,14 +141,20 @@ export default function SingleProduct() {
           {isSizeNotSelected && <p className='size-warning'>Please Select a Size</p>}
         </div>
         <div className='product-actions'>
-          <button className={`buy ${isSizeNotSelected && 'btn-disabled'}`}> Buy Now </button>
-          <button className={`add-to-cart ${isSizeNotSelected && 'btn-disabled'}`}> Add to Cart <AiOutlineShoppingCart className='cart-icon'/></button>
+          <button className='add-to-cart'
+            onClick={handleAddToCart}> Add to Cart <AiOutlineShoppingCart className='cart-icon'/>
+          </button>
+          {
+            favorites.find(favItem=> favItem.id=== productDetails?.id) === undefined
+            ?<button className='add-to-wishlist' onClick={handleAddToFavorite}> Add to Whishlist <MdFavoriteBorder className='cart-icon'/> </button>
+            :<button className='add-to-wishlist' onClick={handleRemoveFromFavorite}> Remove from Whishlist <MdFavorite className='cart-icon'/> </button>
+          }
         </div>
         <h3>
           Product Details
         </h3>
         <p className='product-details'>
-          {productDetails?.description}
+          {productDetails?.attributes.description}
         </p>
       </div>
     </div>
