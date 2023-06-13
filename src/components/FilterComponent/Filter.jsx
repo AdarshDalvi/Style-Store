@@ -1,6 +1,14 @@
 import './Filter.scss'
 
 export default function Filter({filters, handleOnChange}) {
+
+  let defaultFilters = {...filters}
+  for(let key in defaultFilters){
+    if(key === 'category' && defaultFilters[key]=== ''){
+      defaultFilters[key] = '6'
+    }
+  }
+
   return (
     <div className='other-filters'>
       <div className='input-item'>
@@ -10,37 +18,17 @@ export default function Filter({filters, handleOnChange}) {
           id="all"
           name="category"
           value='6'
-          checked={filters.category === '6'}
+          checked={defaultFilters.category === '6'}
           onChange={handleOnChange}
         />
         <label htmlFor="all"> All </label>
         <br />
         <input 
           type="radio"
-          id="men"
-          name="category"
-          value='2'
-          checked={filters.category === '2'}
-          onChange={handleOnChange}
-        />
-        <label htmlFor="men"> Men </label>
-        <br />
-        <input 
-          type="radio"
-          id="women"
-          name="category"
-          value='4'
-          checked={filters.category === '4'}
-          onChange={handleOnChange}
-        />
-        <label htmlFor="women"> Women</label>
-        <br />
-        <input 
-          type="radio"
           id="jordan"
           name="category"
           value='1'
-          checked={filters.category === '1'}
+          checked={defaultFilters.category === '1'}
           onChange={handleOnChange}
         />
         <label htmlFor="jordan"> Jordan</label>
@@ -50,7 +38,7 @@ export default function Filter({filters, handleOnChange}) {
           id="sneakers"
           name="category"
           value='5'
-          checked={filters.category === '5'}
+          checked={defaultFilters.category === '5'}
           onChange={handleOnChange}
         />
         <label htmlFor="sneakers"> Sneakers</label>
@@ -60,7 +48,7 @@ export default function Filter({filters, handleOnChange}) {
           id="running"
           name="category"
           value='3'
-          checked={filters.category === "3"}
+          checked={defaultFilters.category === "3"}
           onChange={handleOnChange}
         />
         <label htmlFor="running"> Running shoes</label>
@@ -73,7 +61,7 @@ export default function Filter({filters, handleOnChange}) {
           type="radio" 
           value='asc' 
           name='sort' 
-          checked={filters.sort === 'asc'} 
+          checked={defaultFilters.sort === 'asc'} 
           onChange={handleOnChange}
         />
         <label htmlFor="lowest">Price(Lowest First)</label>
@@ -83,7 +71,7 @@ export default function Filter({filters, handleOnChange}) {
           type="radio" 
           value='desc' 
           name='sort' 
-          checked={filters.sort === 'desc'} 
+          checked={defaultFilters.sort === 'desc'} 
           onChange={handleOnChange}
         />
         <label htmlFor="highest">Price(Highest First)</label>

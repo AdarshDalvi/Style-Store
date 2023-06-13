@@ -1,0 +1,38 @@
+.skFeatured{
+    width: 90%;
+    margin: 3em auto 0;
+
+    .skFeatureHeading{
+        width: 100%;
+        display: flex;
+        align-items: baseline;
+        margin-bottom: 1.5rem;
+        justify-content: space-between;
+        animation: skeleton 1s infinite alternate;
+
+        .skfeaturedH{
+            height: 20px;
+            width: 40%;
+            background-color: rgb(225, 225, 225);
+        }
+
+        .skViewAll{
+            height: 15px;
+            width: 5%;
+            background-color: rgb(225, 225, 225);
+        }
+    }
+
+    @keyframes skeleton{
+        to{
+            opacity: 0.6;
+        }
+    }
+
+    .skFeaturedGrid{
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
+        align-self: center;
+    }
+}

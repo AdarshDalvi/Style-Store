@@ -1,0 +1,163 @@
+.skSingleContainer{
+    flex: 1;
+    display: flex;
+    width: 90%;
+    margin: 2em auto 3em;
+    justify-content: space-between;
+    padding: 0 1em;
+    animation: skeleton 1s infinite alternate;
+
+    .skSingleProductImages{
+        width: 49.5%;
+        display: flex;
+        justify-content: space-between;
+
+        .skSingleAllImages{
+            width: 15%;
+            display: flex;
+            gap: 15px;
+            flex-direction: column;
+
+            div{
+                width: 90%;
+                height: 60px;
+                background-color: rgb(225, 225, 225);
+            }
+        }
+
+        .main-image{
+            width: 80%;
+            height: 40vw;
+            background-color: rgb(225, 225, 225);
+        }
+    }
+
+    .skProductInfo{
+        width: 45.5%;
+
+        .skProductHeading{
+            width: 65%;
+            height: 25px;
+            background-color: rgb(225, 225, 225);
+            margin-bottom: 0.7em;
+        }
+
+        .skProductPrice{
+            width: 30%;
+            height: 15px;
+            background-color: rgb(225, 225, 225);
+            margin-bottom: 0.4em;
+        }
+
+        .skInPrice{
+            width: 15%;
+            height: 10px;
+            background-color: rgb(225, 225, 225);
+            margin-bottom: 0.2em;
+        }
+
+        .skSize{
+            margin-top: 3rem;
+            margin-bottom: 2em;
+            
+            .skSelectSize{
+                width: 25%;
+                height: 15px;
+                background-color: rgb(225, 225, 225);
+                margin-bottom: 0.2em;
+            }
+
+            .skSizeGrid{
+                margin-top: 1em;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                column-gap: 15px;
+                row-gap: 20px;
+
+                .skSizeBox{
+                    // width: 40px;
+                    height: 35px;
+                    border-radius: 4px;
+                    background-color: rgb(225, 225, 225);
+                }
+            }
+        }
+
+        .skproductAction{
+            width: 100%;
+            height: 40px;
+            background-color: rgb(225, 225, 225);
+            margin-bottom: 1rem;
+            border-radius: 1.5rem;
+        }
+
+        .skProductDescHead{
+            width: 40%;
+            height: 15px;
+            background-color: rgb(225, 225, 225);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .skProductDescription{
+            width: 100%;
+            height: 10px;
+            background-color: rgb(225, 225, 225);
+            margin-bottom: 0.4em;
+        }
+    }
+}
+
+@keyframes skeleton{
+    to{
+        opacity: 0.6;
+    }
+}
+
+
+@media (max-width: 990px){
+    .skSingleContainer{
+        flex-direction: column;
+
+        .skSingleProductImages{
+            width: 70%;
+            align-self: center;
+        }
+        
+        .skProductInfo{
+            width: 100%;
+            margin-top: 2em;
+
+            .skProductHeading{
+                width: 50%;
+            }
+        }
+
+    }
+}
+
+@media (max-width:675px){
+    .skSingleContainer{
+        .skSingleProductImages{
+            flex-direction: column;
+            width: 100%;
+            gap: 1.5em;
+
+            .skSingleAllImages{
+                width: 100%;
+                flex-direction: row;
+                
+                div{
+                   max-width: 13vw; 
+                }
+            }
+
+            .main-image{
+                align-self: center;
+                order: -1;
+                max-width: 100%;
+                max-height: 50vw;
+            }
+        }
+    }
+}

@@ -1,0 +1,46 @@
+.input-container{
+
+    --inputWidth: 50%;
+
+    input{
+        display: block;
+        padding: 0.5em 1em;
+        width: var(--inputWidth);
+        margin-top: 2px;
+        border-radius: 3px;
+        border: 1px solid rgb(135, 135, 135);
+    }
+
+    input:focus{
+        outline: none;
+    }
+
+    label{
+        font-size: clamp(0.7rem, 2vw, 0.8rem);
+        font-weight: 500;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+    input[type=number]{
+        appearance: textfield;
+        -moz-appearance: textfield;
+    }
+
+    span{
+        display: inline-block;
+        width: var(--inputWidth);
+        color: rgb(255, 0, 0);
+        margin-top: 0.4em;
+        font-size: clamp(0.7rem, 2vw, 0.8rem);
+    }
+
+
+    @media (max-width:875px){
+        --inputWidth: 100%;
+    }
+}

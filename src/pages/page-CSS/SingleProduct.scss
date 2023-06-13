@@ -7,10 +7,6 @@
     justify-content: space-between;
     padding: 0 1em;
 
-    .mobile-heading{
-        display: none;
-    }
-
     .product-images{
             width: 49.5%;
             display: flex;
@@ -58,7 +54,7 @@
     .product-info{
         width: 45.5%;
         h2{
-            font-size: clamp(1rem, 4vw, 2rem);
+            font-size: clamp(1.3rem, 4vw, 2rem);
         }
 
         .price{
@@ -193,28 +189,18 @@
     .product-container{
         flex-direction: column;
 
-        .mobile-heading{
-            display: block;
-            margin-bottom: 1em;
-            font-size:clamp(1rem, 4vw, 2rem);
-        }
-
         .product-images{
             width: 70%;
             align-self: center;
-
-            #main-image{
-                height: 40vw;
-            }
         }
 
         .product-info{
             width: 100%;
             margin-top: 2em;
 
-            h2{
-                display: none;
-            }
+            // h2{
+            //     display: none;
+            // }
 
             .price , .inc{
                 display: inline-block;

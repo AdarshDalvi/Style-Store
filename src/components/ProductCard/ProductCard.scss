@@ -1,51 +1,91 @@
 .product-link{
-    text-decoration: none;
     color: rgb(47, 47, 47);
-    
-    .image-container{
-        overflow: hidden;
+    text-decoration: none;
+
+    .card{
+        color: rgb(47, 47, 47);
+        border: 1px solid rgb(227, 227, 227);
         width: 100%;
-        height: 14rem;
+        background-color: rgb(247, 247, 247);
+        padding-bottom: 0.7em;
 
-        img{
+        .product-image{
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            transition: 0.5s all ease-in-out;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            border-bottom: 1px solid rgb(227, 227, 227);
+
+            .img{
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                transition: 0.5s  ease-in-out ;
+            }
+
+            
         }
-    }
 
-    .card-info-container{
+       .content{
         margin-top: 0.8em;
-        display: flex;
-        justify-content: space-between;
-        font-weight: bold;
-        padding: 0 .1em;
+        padding: 0 0.4em;
+
+        .product-name{
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            h3{
+                max-width: 70%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: clamp(0.9rem, 2.5vw, 1rem);
+            }
+
+            .fav-icon{
+                font-size: 1.1rem;
+            }
+        }
+
+        .product-price{
+            display: flex;
+            align-items: center;
+            margin-top: 0.4em;
+
+            p{
+                font-weight: 500;
+                font-size: clamp(0.8rem,2vw, 0.9rem);
+            }
+
+            h4{
+                margin-left: 0.3em;
+                font-size: clamp(0.7rem,2vw, 0.8rem);
+                color: rgb(140, 140, 140);
+                font-weight: 500;
+
+                span{
+                    text-decoration: line-through;
+                }
+            }
+
+            p:nth-child(3){
+                color: green;
+                margin-left: auto;
+                text-transform: uppercase;
+                font-size: clamp(0.7rem,2vw, 0.8rem);
+            }
+        }
+       } 
     }
 
-    
-    .image-container img:hover{
-        transform: scale(1.1);
+    .card:hover .product-image img{
+        transform: scale(1.15);
     }
 
-    @media (max-width: 325px){
-        .image-container {
-            height: 11rem;
-        } 
-    }
-
-    @media (max-width: 250px){
-        .image-container {
-            height: 8rem;
-        } 
-    }
-    
-}
-
-
-.product-link:hover{
-    text-decoration: underline;
 }
 
 

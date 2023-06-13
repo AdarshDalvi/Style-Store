@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import CartCard from '../components/CartCard/CartCard'
 import './page-CSS/Cart.scss'
 import {useSelector} from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 
 export default function Cart() {
@@ -12,6 +12,12 @@ export default function Cart() {
   const subtotal = useMemo(()=>{
     return cartItems.reduce((total, item)=>total + item.attributes.price,0)
   }, [cartItems])
+
+  const navigate = useNavigate()
+
+  const naviagteTo = () => {
+    navigate('/checkout')
+  }
 
   return (
     cartItems.length>0 ? 
@@ -36,17 +42,19 @@ export default function Cart() {
               including duties and taxes.
             </p>
           </div>
-          <button className='checkout'>Checkout</button>
+          <button className='checkout' onClick={naviagteTo}>Proceed to Buy</button>
         </div>
       </div>
     </div>
     : 
-    <div className='empty-cart'>
-      <img src="/empty-cart.jpg" alt="" />
-      <h3>Your cart is empty</h3>
-      <p>Let's add some items</p>
-      <NavLink to='/products'><button>Explore Shop</button></NavLink>
-      {favorites.length>0 && <NavLink to='/favorite'><button>Add from Favorites</button></NavLink>}
+    <div className='empty-cart-container'>
+      <div className='empty-cart'>
+        <img src="/general/empty-cart.jpg" alt="" />
+        <h3>Your cart is empty</h3>
+        <p>Let's add some items</p>
+        <NavLink to='/products/6'><button>Explore Shop</button></NavLink>
+        {favorites.length>0 && <NavLink to='/favorite'><button>Add from Favorites</button></NavLink>}
+      </div>
     </div>
   )
 }

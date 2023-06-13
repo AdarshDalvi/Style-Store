@@ -34,29 +34,32 @@ export default function Header() {
     <>
       <header>
         <NavLink to='.'>
-          <img className='logo'  src="/images/main-logo.png" alt="logo-icon" />
+          <img className='logo'  src="/general/main-logo.png" alt="logo-icon" />
         </NavLink>
         <div className='nav-wrapper'>
+
           <div className='icon-wrapper favorite'>
             <NavLink to='favorite'> <MdFavoriteBorder /> </NavLink>
             {favCount>0 && <span>{favCount}</span>}
           </div>
+
           <div className='icon-wrapper cart'>
             <NavLink to='cart'> <AiOutlineShoppingCart /> </NavLink>
             {cartCount>0 && <span>{cartCount}</span>}
           </div>
-          {/* <NavLink to='favorite'><MdFavoriteBorder className='icons account'/></NavLink>
-          <NavLink to='cart'><AiOutlineShoppingCart className='icons cart'/></NavLink> */}
+
           <div className='hamburger-menu'>
             {!showNavbar ? <BiMenuAltRight className='hamburger-icon' onClick={()=>showHamburger()}/>: <GrFormClose className='hamburger-icon' onClick={()=>showHamburger()}/>}
           </div>
+
           <nav className={!showNavbar?'nav-deactivate':null}>
             <NavLink to='.' onClick={()=>setShowNavbar(prevValue=>false)} className={({isActive}) => isActive ? 'activeLink' : null}>Home</NavLink>
-            <NavLink to='products' onClick={()=>setShowNavbar(prevValue=>false)} className={({isActive}) => isActive ? 'activeLink' : null}>Shop</NavLink>
+            <NavLink to='products/6' onClick={()=>setShowNavbar(prevValue=>false)} className={({isActive}) => isActive ? 'activeLink' : null}>Shop</NavLink>
             {showNavbar&& <NavLink to='favorite' onClick={()=>setShowNavbar(prevValue=>false)} className={({isActive}) => isActive ? 'activeLink' : null}>Favorite</NavLink>}
             <NavLink to='about' onClick={()=>setShowNavbar(prevValue=>false)} className={({isActive}) => isActive ? 'activeLink' : null}>About</NavLink>
             <NavLink to='contact' onClick={()=>setShowNavbar(prevValue=>false)} className={({isActive}) => isActive ? 'activeLink' : null}>Contact</NavLink>
           </nav>
+
         </div>
       </header>
     </>

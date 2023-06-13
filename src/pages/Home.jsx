@@ -4,6 +4,8 @@ import SmallBanner from '../components/Small-Banner/SmallBanner'
 import Featured_Latest from '../components/Featured/Featured_Latest'
 import { useEffect, useState } from 'react'
 import {getAllProducts} from '../utils/api'
+import FeatureSkeleton from '../components/Skeleton/FeatureSkeleton/FeatureSkeleton'
+import SomethingWentWrong from '../components/SomethingWentWrong/SomethingWentWrong'
 
 export default function Home() {
 
@@ -40,9 +42,19 @@ export default function Home() {
         </div>
         <h1><span>10</span>% OFF</h1>
       </div>
-      <Featured_Latest data={products} heading='Featured products'/>
+      { (loading && products==null)
+        ?<FeatureSkeleton/>
+        :(!loading && (products==null || products===[]))
+        ?<SomethingWentWrong buttonFunction={getProducts}/>
+        : <Featured_Latest data={products} heading='Featured products'/>
+      }
       <SmallBanner/>
-      <Featured_Latest data={products} heading='Latest products'/>
+      { (loading && products==null)
+        ?<FeatureSkeleton/>
+        :(!loading && (products==null || products===[]))
+        ?<SomethingWentWrong buttonFunction={getProducts}/>
+        : <Featured_Latest data={products} heading='Latest products'/>
+      }
     </div>
   )
 }
