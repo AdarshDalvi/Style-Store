@@ -1,6 +1,14 @@
 import './Filter.scss'
 
 export default function Filter({filters, handleOnChange}) {
+
+  let defaultFilters = {...filters}
+  for(let key in defaultFilters){
+    if(key === 'category' && defaultFilters[key]=== ''){
+      defaultFilters[key] = '6'
+    }
+  }
+
   return (
     <div className='other-filters'>
       <div className='input-item'>
@@ -9,31 +17,41 @@ export default function Filter({filters, handleOnChange}) {
           type="radio"
           id="all"
           name="category"
-          value="0"
-          checked={filters.category === "0"}
+          value='6'
+          checked={defaultFilters.category === '6'}
           onChange={handleOnChange}
         />
         <label htmlFor="all"> All </label>
         <br />
         <input 
           type="radio"
-          id="men"
+          id="jordan"
           name="category"
-          value="1"
-          checked={filters.category === "1"}
+          value='1'
+          checked={defaultFilters.category === '1'}
           onChange={handleOnChange}
         />
-        <label htmlFor="men"> Men </label>
+        <label htmlFor="jordan"> Jordan</label>
         <br />
         <input 
           type="radio"
-          id="women"
+          id="sneakers"
           name="category"
-          value="2"
-          checked={filters.category === "2"}
+          value='5'
+          checked={defaultFilters.category === '5'}
           onChange={handleOnChange}
         />
-        <label htmlFor="women"> Women</label>
+        <label htmlFor="sneakers"> Sneakers</label>
+        <br />
+        <input 
+          type="radio"
+          id="running"
+          name="category"
+          value='3'
+          checked={defaultFilters.category === "3"}
+          onChange={handleOnChange}
+        />
+        <label htmlFor="running"> Running shoes</label>
       </div>
       
       <div className="input-item">
@@ -41,9 +59,9 @@ export default function Filter({filters, handleOnChange}) {
         <input 
           id='lowest' 
           type="radio" 
-          value='desc' 
+          value='asc' 
           name='sort' 
-          checked={filters.sort === 'desc'} 
+          checked={defaultFilters.sort === 'asc'} 
           onChange={handleOnChange}
         />
         <label htmlFor="lowest">Price(Lowest First)</label>
@@ -51,9 +69,9 @@ export default function Filter({filters, handleOnChange}) {
         <input 
           id='highest' 
           type="radio" 
-          value='asc' 
+          value='desc' 
           name='sort' 
-          checked={filters.sort === 'asc'} 
+          checked={defaultFilters.sort === 'desc'} 
           onChange={handleOnChange}
         />
         <label htmlFor="highest">Price(Highest First)</label>

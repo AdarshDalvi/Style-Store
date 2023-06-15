@@ -1,172 +1,169 @@
 import './page-CSS/SingleProduct.scss'
-import Featured_Latest from '../components/Featured/Featured_Latest'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
-
+import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
+import { getAllProducts } from '../utils/api'
+import { useParams } from 'react-router-dom'
+import {useSelector, useDispatch} from 'react-redux'
+import {addToCart} from '../redux/cartSlice'
+import { addToFavrite, removeFromFavorite } from '../redux/favoriteSlice'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { nanoid } from '@reduxjs/toolkit'
+import SingleProductSkeleton from '../components/Skeleton/SingleProductSkeleton/SingleProductSkeleton'
+import SomethingWentWrong from '../components/SomethingWentWrong/SomethingWentWrong'
 
 export default function SingleProduct() {
-  const data = [
-    { 
-      id: 1,
-      url: '/products/card-item1.jpg',
-      name : 'Nike Running Shoes',
-      price: 30,
-      categoty: 0
-    },
-    { 
-      id:2,
-      url: '/products/card-item2.jpg',
-      name : 'Nike Running Shoes',
-      price: 40,
-      categoty: 1
-    },
-    {
-      id:3,
-      url: '/products/card-item3.jpg',
-      name : 'Nike Running Shoes',
-      price: 30,
-      categoty: 2
-    },
-    {
-      id:4,
-      url: '/products/card-item1.jpg',
-      name : 'Nike Running Shoes',
-      price: 50,
-      categoty: 0
-    },
-    {
-      id:5,
-      url: '/products/card-item2.jpg',
-      name : 'Nike Running Shoes',
-      price: 30,
-      categoty: 1
+
+  const [loading, setLoading] = useState(false)
+  const [productDetails, setProductDetails] = useState(null)
+  const [imageData, setImageData] = useState(null)
+  const [shoeSizes, setShoesSizes] = useState(null)
+
+  const {slug} = useParams()
+  
+  useEffect(()=>{
+    getProductDetails()
+  },[])
+
+  const dispatch = useDispatch() 
+  const favorites = useSelector(state=>state.favorite.favorites)
+
+  const getProductDetails = async()=>{
+    try{
+      setLoading(true)
+      const {data} = await getAllProducts(`/products?filters[slug][$eq]=${slug}&populate=*`)
+      const product = data?.[0]
+      setProductDetails(prevDetails=> product)
+      setImageData(prevData=>{
+        return product?.attributes.product_image.data?.map(image=>{
+          return image.attributes.url
+        })
+      })
+      setShoesSizes(prevSizes=>{
+        return product?.attributes.size.data?.map(size=>{
+          return size
+        })
+      })
+      setLoading(false)
+    }catch(e){
+      setLoading(false)
+      console.log(e.message)
     }
-  ]
+  }
+
+  const notify = (message)=>{
+    toast.success(message, {
+      position: "bottom-center",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  }
 
   const [selectedImage, setSelectedImage] = useState(0)
 
-  const images= [
-    '/single-product/p1.png',
-    '/single-product/p2.png',
-    '/single-product/p3.png'
-  ]
-
   const [selectedSize, setSelectedSize] = useState('')
+  const [isSizeNotSelected, setIsSizeNotSelcted] = useState(selectedSize!=='')
 
   function handleOnChange(event){
     const {value} = event.target
     setSelectedSize(prevValue=> value)
+    setIsSizeNotSelcted(false)
   }
 
-  const sizes= [
-    {
-      id:0,
-      size: 'UK 4',
-      isAvailable : false
-    },
-    {
-      id:1,
-      size: 'UK 5',
-      isAvailable : false
-    },
-    {
-      id:2,
-      size: 'UK 6',
-      isAvailable : true
-    },
-    {
-      id:3,
-      size: 'UK 7',
-      isAvailable : true
-    },
-    {
-      id:4,
-      size: 'UK 8',
-      isAvailable : true
-    },
-    {
-      id:5,
-      size: 'UK 9',
-      isAvailable : true
-    },
-    {
-      id:6,
-      size: 'UK 10',
-      isAvailable : true
-    },
-    {
-      id:7,
-      size: 'UK 11',
-      isAvailable : false
-    }
-  ]
+  const handleAddToCart  = ()=>{
+    if(selectedSize!==''){
+      dispatch(addToCart({...productDetails, selectedSize, oneQuantityPrice: productDetails?.attributes.price, cartItemId: nanoid()}))
+      notify('Product Added to Cart!')
+    }else{
+      setIsSizeNotSelcted(true)
+    }  
+  }
 
-  const isSizeNotSelected = selectedSize===''
+  const handleAddToFavorite =() =>{
+    dispatch(addToFavrite({...productDetails, selectedSize, favItemId: nanoid()}))
+    notify('Product Added to Favorites!')
+  }
+
+  const handleRemoveFromFavorite = ()=>{
+    dispatch(removeFromFavorite({id: productDetails?.id}))
+    notify('Product Removed from Favorites!')
+  }
+
   return (
-    <div className='product-container'>
-      <h2 className='mobile-heading'>Nike Running Shoes</h2>
-      <div className='product-images'>
-        <div className='all-product-images'>
-          <div className='image-wrapper' onClick={()=>setSelectedImage(0)}>
-            {selectedImage === 0 && <div className='image-overlay'></div>}
-            <img  src={images[0]} alt='' />
-          </div>
-          <div className='image-wrapper' onClick={()=>setSelectedImage(1)}>
-            {selectedImage === 1 && <div className='image-overlay'></div>}
-            <img  src={images[1]} alt='' />
-          </div>
-          <div className='image-wrapper' onClick={()=>setSelectedImage(2)}>
-            {selectedImage === 2 && <div className='image-overlay'></div>}
-            <img  src={images[2]} alt='' />
-          </div>
-        </div>
-        <img id='main-image' src={images[selectedImage]} alt="" />
-      </div>
-      <div className='product-info'>
-        <h2>Nike Running Shoes</h2>
-        <p className='price'>MRP : $50</p>
-        <p className='inc'>{`(incl. of taxes)`}</p>
-        <div className='size'>
-          <p>Select Size :</p>
-          <div className='size-grid'>
+    loading
+    ? <SingleProductSkeleton/>
+    : !loading && (productDetails == null || productDetails == undefined)  
+    ? <SomethingWentWrong buttonFunction={getProductDetails}/>
+    : <div className='product-container'>
+        <ToastContainer/>
+        <div className='product-images'>
+          <div className='all-product-images'>
             {
-              sizes.map(size=>(
-                <label 
-                  key={size.id} 
-                  htmlFor={size.id} 
-                  className={`size-box ${!size.isAvailable? 'not-avail':null} ${size.size === selectedSize && 'active-size'}`}
-                >
-                  {size.size}
-                  <input 
-                    type="radio" 
-                    name='selectedSize'
-                    value={size.size}
-                    id={size.id}
-                    checked={selectedSize === size.size}
-                    onChange={handleOnChange}
-                  />
-                </label>
+              imageData?.map((url, index)=>(
+                <div key={index} className='image-wrapper' onClick={()=>setSelectedImage(index)}>
+                  {selectedImage === index && <div className='image-overlay'></div>}
+                  <img  src={url} alt='' />
+                </div>
               ))
             }
           </div>
-          {isSizeNotSelected && <p className='size-warning'>Please Select a Size</p>}
+          <img id='main-image' src={imageData?.[selectedImage]} alt="" />
         </div>
-        <div className='product-actions'>
-          <button className={`buy ${isSizeNotSelected && 'btn-disabled'}`}> Buy Now </button>
-          <button className={`add-to-cart ${isSizeNotSelected && 'btn-disabled'}`}> Add to Cart <AiOutlineShoppingCart className='cart-icon'/></button>
+        <div className='product-info'>
+          <h2>{productDetails?.attributes.name}</h2>
+          <p className='price'>MRP : ${productDetails?.attributes.price}</p>
+          <p className='inc'>{`(incl. of taxes)`}</p>
+          <div className='size'>
+            <p>Select Size :</p>
+            <div className='size-grid'>
+              {
+                shoeSizes?.map((size,index)=>(
+                  <label 
+                    key={index} 
+                    htmlFor={index} 
+                    className={`size-box ${!size.enabled? 'not-avail':null} ${size.size === selectedSize && 'active-size'}`}
+                  >
+                    {size.size}
+                    <input 
+                      type="radio" 
+                      name='selectedSize'
+                      value={size.size}
+                      id={index}
+                      checked={selectedSize === size.size}
+                      onChange={handleOnChange}
+                    />
+                  </label>
+                ))
+              }
+            </div>
+            {isSizeNotSelected && <p className='size-warning'>Please Select a Size</p>}
+          </div>
+          <div className='product-actions'>
+            <button className='add-to-cart'
+              onClick={handleAddToCart}> Add to Cart <AiOutlineShoppingCart className='cart-icon'/>
+            </button>
+            {
+              favorites.find(favItem=> favItem.id=== productDetails?.id) === undefined
+              ?<button className='add-to-wishlist' onClick={handleAddToFavorite}> Add to Whishlist <MdFavoriteBorder className='cart-icon'/> </button>
+              :<button className='add-to-wishlist' onClick={handleRemoveFromFavorite}> Remove from Whishlist <MdFavorite className='cart-icon'/> </button>
+            }
+          </div>
+          <h3>
+            Product Details
+          </h3>
+          <p className='product-details'>
+            {productDetails?.attributes.description}
+          </p>
         </div>
-        <h3>
-          Product Details
-        </h3>
-        <p className='product-details'>
-          Every time the AJ1 gets a remake, you get the classic 
-          sneaker in new colours and textures for an exciting, 
-          revamped look but with all the familiar comforts you 
-          know. Premium materials and accents give modern 
-          expression to an all-time favourite.
-        </p>
-      </div>
-    </div>
+     </div>
+    
+    
   )
 }
 

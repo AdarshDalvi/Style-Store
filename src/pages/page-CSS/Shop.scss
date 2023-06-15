@@ -1,33 +1,35 @@
 .shop-container{
+    flex: 1;
     display: flex;
     width: 90%;
     margin: 2em auto 3em;
-    gap: 2rem;
-    align-items: flex-start;
+    justify-content: space-between;
 
-    .filters{
+
+    button{
+        background-color: rgb(46, 46, 46);
+        color: white;
+        border: none;
+    }
+
+    .filter-btn{
+        display: none;
+    }
+
+    .filters-container{
         position: sticky;
-        height: 100%;
-        top: 90px;
         width: 30%;
-
-        .filter-btn{
-            display: none;
-        }
+        top: 90px;
+        height: 100%;
 
         .search-container{
-            position: relative;
-            width: 100%;
-            margin-bottom: 1em;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
 
             .search-box-wrapper{
+                width: 90%;
                 position: relative;
-                width: 100%;
-
                 .search-box{
-                    font-family: 'Inter',sans-serif;
                     width: 100%;
                     padding: 0.9em 2.7em 0.9em 1.5em; 
                     font-size: 0.7rem;
@@ -36,155 +38,130 @@
                     border-bottom-left-radius: 3px;
                     box-shadow: -4px 5px 10px rgba($color: #000000, $alpha: 0.15);
                 }
+
                 .search-box:focus{
                     outline: none;
                 }
-            }
-            .clear-button{
-                position: absolute;
-                cursor: pointer;
-                right: 4%;
-                font-size: 1rem;
-                top: 26%;
-                background-color: rgb(195, 195, 195);
-                border-radius: 50%;
-                padding: 0.15em;
+
+                .clear-search{
+                    cursor: pointer;
+                    position: absolute;
+                    right: 4%;
+                    font-size: 1rem;
+                    top: 26%;
+                    background-color: rgb(195, 195, 195);
+                    border-radius: 50%;
+                    padding: 0.15em;
+                }
             }
 
             .search-btn{
-                background-color: rgb(46, 46, 46);
-                border: none;
-                padding: 0.7em 0.8em 0.6em;
+                padding: 0.65em 0.8em 0.62em;
+                margin-left: -2px;
                 border-top-right-radius: 3px;
                 border-bottom-right-radius: 3px;
-                margin-left: -1px;
             }
-            
+
             .search-btn:hover, .search-btn:focus{
                 background-color: rgba(46, 46, 46,0.8);
             }
-            
-        }
 
-        .other-filters{
-            .input-item{
-                margin-bottom: 1em;
-                color: rgb(32, 32, 32);
-    
-                h3{
-                    text-decoration: underline;
-                    font-size: 1.1rem;
-                }
-    
-                p{
-                    font-size: 0.9rem;
-                    color: rgb(90, 90, 90);
-                    margin-top: 0.5em;
-                    cursor: pointer;
-                }
-    
-                p:hover, p:focus{
-                    text-decoration: underline;
-                }
-    
-                input[type = range], input[type=radio]{
-                    margin-top: 1em;
-                }
+            .search-btn:active{
+                background-color: rgba(46, 46, 46,0.6);
             }
         }
 
-        .btn-wrapper{
-            display: flex;
-            justify-content: space-between;
+        .desktop-filters{
+            margin-top: 1.2em;
 
-            .clear-btn,.apply-btn{
-                padding: 0.4em 1.5em;
-                border-radius: 4px;
-            }
-            
-            .apply-btn{
-                border: solid black;
-                background-color: black;
-                color: white ;
-            }
+            .desktop-filter-actions{
+                display: flex;
+                justify-content: space-between;
+                margin-top: 1em;
 
-            .clear-btn{
-                border: solid 1px rgb(195, 195, 195);
+                button{
+                    padding: 0.4em 1.5em;
+                    border-radius: 1.1rem;
+                }
+
+                button:first-child{
+                    background-color: transparent;
+                    color: black;
+                    border: 1px solid rgb(46, 46, 46);
+                }
+
+                button:last-child:hover{
+                    background-color: rgba(46, 46, 46,0.8);
+                }
+                button:last-child:active{
+                    background-color: rgba(46, 46, 46,0.6);
+                }
             }
         }
     }
 
-    .products{
-        width: 70%;
-        img{
+    .products-container{
+        width: 65%;
+
+        .category-image{
             width: 100%;
-            max-height: 13rem;
-            object-fit: cover;
-            object-position: left;
+            height: 13rem;
+            background-color: rgb(225, 225, 225);
+            img{
+                height: inherit;
+                width: 100%;
+                object-fit: cover;
+            }
         }
+
     }
 }
 
 @media (max-width: 850px){
-
     .shop-container{
         flex-direction: column;
-        align-items: center;
 
-        .filters{
-            display: flex;
-            width: 100%;
-            gap: 15px;
+        .filters-container{
             position: static;
+            width: 100%;
+            display: flex;
+            gap: 20px;
+            align-items: center;
 
-            .other-filters{
-                display: none;
-            }
+            .search-container{
+                flex: 3; 
 
-            .btn-wrapper{
-                display: none;
+                .search-box-wrapper{
+                    width: 100%;  
+                }
             }
 
             .filter-btn{
                 display: inline-block;
-                padding: 0.6em 1.4em;
-                font-family: 'Inter',sans-serif;
-                color: white;
-                background-color: rgb(46, 46, 46);
-                border: none;
-                border-radius: 3px;
+                padding: 0.65em 1.5em;
+                border-radius: 4px;
 
                 .filter-icon{
                     margin-left: 0.3em;
                 }
             }
+        }
 
-            .filter-btn:hover{
-                background-color: rgba(46, 46, 46,0.8);
-            }
-
-
-            @media (max-width: 450px){
+        @media (max-width: 450px){
+            .filters-container{
+                gap: 10px;
                 .filter-btn{
-                    font-size: 0.6rem;
-            
+                    padding: 0.65em 0.8em;
                     span:first-child{
                         display: none;
                     }
                 }
             }
-            
-
-            .search-container{
-                margin-bottom: 0;
-                flex: 3;
-            }                
         }
 
-        .products{
+        .products-container{
             width: 100%;
+            margin-top: 1.5rem;
         }
     }
-
 }
-

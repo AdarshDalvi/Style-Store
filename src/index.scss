@@ -5,8 +5,17 @@
 }
 
 #root{
-    padding-top: 68.385px;
+    padding-top: clamp(58.39px, 17.25vw, 68.39px);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+
+
+    button:hover{
+        background-color: rgba($color: #000000, $alpha: 0.8);
+    }
+
+    button:active{
+        background-color: rgba($color: #000000, $alpha: 0.6);
+    }
 }

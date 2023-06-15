@@ -1,14 +1,11 @@
 
 .product-container{
+    flex: 1;
     display: flex;
     width: 90%;
     margin: 2em auto 3em;
     justify-content: space-between;
     padding: 0 1em;
-
-    .mobile-heading{
-        display: none;
-    }
 
     .product-images{
             width: 49.5%;
@@ -57,7 +54,7 @@
     .product-info{
         width: 45.5%;
         h2{
-            font-size: clamp(1rem, 4vw, 2rem);
+            font-size: clamp(1.3rem, 4vw, 2rem);
         }
 
         .price{
@@ -137,28 +134,34 @@
                     padding: 1em  1.5em;
                     border-radius: 2rem;
                     border: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     font-size: clamp(0.7rem, 2vw, 0.9rem);
                 }
                 
-                .buy{
+                .add-to-cart{
                     color: white;
                     background-color: black;
                 }
 
-                .buy:hover , .buy:focus{
+                .add-to-cart:hover , .add-to-cart:active{
                     background-color: rgba($color: #000000, $alpha: 0.8);
                 }
 
-                .add-to-cart{
+                .add-to-wishlist{
                     font-weight: 500;
-                    background-color: rgb(222, 222, 222);
-                    .cart-icon{
-                        margin-left: 0.5em;
-                    }
+                    background-color: transparent;
+                    border: 1px solid black;
+                }
+                
+                .cart-icon{
+                    font-size: 1rem;
+                    margin-left: 0.5em;
                 }
 
-                .add-to-cart:hover, .add-to-cart:focus{
-                    border: 1px solid black;
+                .add-to-wishlist:hover, .add-to-wishlist:focus{
+                    background-color: rgba($color: #000000, $alpha: 0.05);
                 }
 
                 .btn-disabled{
@@ -186,28 +189,18 @@
     .product-container{
         flex-direction: column;
 
-        .mobile-heading{
-            display: block;
-            margin-bottom: 1em;
-            font-size:clamp(1rem, 4vw, 2rem);
-        }
-
         .product-images{
             width: 70%;
             align-self: center;
-
-            #main-image{
-                height: 40vw;
-            }
         }
 
         .product-info{
             width: 100%;
             margin-top: 2em;
 
-            h2{
-                display: none;
-            }
+            // h2{
+            //     display: none;
+            // }
 
             .price , .inc{
                 display: inline-block;
