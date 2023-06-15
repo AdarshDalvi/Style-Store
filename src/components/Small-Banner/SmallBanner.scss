@@ -11,7 +11,9 @@
 
         .image-container{
             position: relative;
-            max-height: 330px;
+            height: 330px;
+            border-radius: 0.8em;
+            background-color: rgb(225, 225, 225);
     
             .overlay{
                 position: absolute;

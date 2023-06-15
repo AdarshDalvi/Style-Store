@@ -134,10 +134,10 @@ export default function Shop() {
       <div className='filters-container'>
         <div className="search-container">
           <div className='search-box-wrapper'>
-            <input name='searchText' value={searchText} onChange={(e)=> setSearchText(prevValue=> e.target.value)} className='search-box' type="text" placeholder='search'/>
+            <input name='searchText' value={searchText} onChange={(e)=> setSearchText(prevValue=> e.target.value)} className='search-box' type="text" placeholder='Search'/>
             {searchText!=='' && <MdOutlineClear className='clear-search' onClick={clearSearch}/>}
           </div>
-          <button className='search-btn' onClick={()=> getData(filters.category,filters.sort,searchText)}>
+          <button className='search-btn' onClick={()=> searchText!=='' && getData(filters.category,filters.sort,searchText)}>
             <BsSearch />
           </button>
         </div>
@@ -169,7 +169,7 @@ export default function Shop() {
         </div>}
       </div>
       <div className='products-container'>
-        <img src={categoryImages[categoryIndex]} alt="category-image" />
+        <div className='category-image'><img src={categoryImages[categoryIndex]} alt="category-image" /></div>
         {
           loading 
           ? <div className='list'> <Skeleton count={6} type='card'/> </div>

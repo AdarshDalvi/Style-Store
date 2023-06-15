@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './Header.scss'
 import { NavLink} from 'react-router-dom'
 import { MdFavoriteBorder } from 'react-icons/md'
@@ -12,7 +12,7 @@ export default function Header() {
   const [showNavbar, setShowNavbar] = useState(false)
   const cartCount = useSelector(state=> state.cart.cartItems.length)
   const favCount = useSelector(state=> state.favorite.favorites.length)
-
+  const navRef = useRef()
   useEffect(()=>{
     function watchWindowWidth(){
       if(window.innerWidth>725){
@@ -29,6 +29,7 @@ export default function Header() {
   const showHamburger = () =>{
     setShowNavbar(prevNavBar=> !prevNavBar)
   }
+
 
   return (
     <>
@@ -52,10 +53,9 @@ export default function Header() {
             {!showNavbar ? <BiMenuAltRight className='hamburger-icon' onClick={()=>showHamburger()}/>: <GrFormClose className='hamburger-icon' onClick={()=>showHamburger()}/>}
           </div>
 
-          <nav className={!showNavbar?'nav-deactivate':null}>
+          <nav className={`${showNavbar && 'active-nav'}`}>
             <NavLink to='.' onClick={()=>setShowNavbar(prevValue=>false)} className={({isActive}) => isActive ? 'activeLink' : null}>Home</NavLink>
             <NavLink to='products/6' onClick={()=>setShowNavbar(prevValue=>false)} className={({isActive}) => isActive ? 'activeLink' : null}>Shop</NavLink>
-            {showNavbar&& <NavLink to='favorite' onClick={()=>setShowNavbar(prevValue=>false)} className={({isActive}) => isActive ? 'activeLink' : null}>Favorite</NavLink>}
             <NavLink to='about' onClick={()=>setShowNavbar(prevValue=>false)} className={({isActive}) => isActive ? 'activeLink' : null}>About</NavLink>
             <NavLink to='contact' onClick={()=>setShowNavbar(prevValue=>false)} className={({isActive}) => isActive ? 'activeLink' : null}>Contact</NavLink>
           </nav>

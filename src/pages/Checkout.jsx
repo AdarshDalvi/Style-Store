@@ -1,4 +1,4 @@
-import React, { useMemo,  useState, useEffect } from 'react'
+import { useMemo,  useState, useEffect } from 'react'
 import './page-CSS/Checkout.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import FormInput from '../components/FormInput/FormInput'
@@ -7,14 +7,33 @@ import {loadStripe} from '@stripe/stripe-js';
 import { makePaymentRequest } from '../utils/api'
 import {STRIPE_KEY} from '../utils/URLs'
 import { clearCart } from '../redux/cartSlice'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate,NavLink} from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
 
 const stripePromise = loadStripe(STRIPE_KEY);
 export default function Checkout() {
 
   const {register, handleSubmit, formState} = useForm({
-    defaultValues: JSON.parse(localStorage.getItem('customer-details')) || {}
+    defaultValues: JSON.parse(localStorage.getItem('customer-details')) || {
+      cname:'',
+      cemail:'',
+      cphone:'',
+      caddress:''
+    }
   })
+
+  const notify = (message)=>{
+    toast.error(message, {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });
+  }
 
   const navigate = useNavigate();
 
@@ -40,6 +59,11 @@ export default function Checkout() {
   }, [cartItems])
   
   const handlePayment = async (data) => {
+    localStorage.setItem('customer-details',JSON.stringify(data))
+    let noError = Object.keys(errors).every(key=>errors[key]==='')
+    if(!noError){
+      return
+    }
     try {
         setLoading(true);
         const stripe = await stripePromise;
@@ -47,20 +71,20 @@ export default function Checkout() {
             products: cartItems,
             shipping_details: data
         });
-        if(!res.error){
-          dispatch(clearCart());
-        }
+        dispatch(clearCart());
         await stripe.redirectToCheckout({
             sessionId: res.stripeSession.id
         });
     } catch (error) {
         setLoading(false);
-        console.log(error);
+        notify('Something Went Wrong !')
     }
   };
 
   return (
+    cartItems.length>0?
     <div className='checkout-container'>
+      <ToastContainer/>
       <div className='shipping-info'>
         <h3>Shipping Details</h3>
         <form className='customer-details' noValidate >
@@ -74,6 +98,10 @@ export default function Checkout() {
               required: {
                 value: true,
                 message: "Name is Required !"
+              },
+              minLength:{
+                value: 4,
+                message: "Name should be atleast 4 characters long !"
               }
             }}
             errors={errors.cname?.message}
@@ -108,7 +136,7 @@ export default function Checkout() {
                 message: "Phone Number is Required !"
               },
               pattern:{
-                value: /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/,
+                value: /^(\+\d{1,3})?\s*\d{10,15}$/,
                 message: "Phone Number is not valid !"
               }
             }}
@@ -116,7 +144,21 @@ export default function Checkout() {
           />
           <div className='form-item'>
             <label htmlFor="adre">Address</label>
-            <textarea name="caddress" id="adre" rows="6" {...register('caddress')}/>
+            <textarea 
+              name="caddress" 
+              id="adre" rows="6" 
+              {...register('caddress',{
+                required:{
+                  value:true,
+                  message:'Address is required !'
+                },
+                minLength:{
+                  value:10,
+                  message:'Address is too short, please provide a detailed address!'
+                }
+              })}
+            />
+            {errors.caddress?.message  && <span>{errors.caddress.message}</span>}
           </div>
         </form>
       </div>
@@ -138,6 +180,15 @@ export default function Checkout() {
             loading && <img className='spinner' src="/general/spinner.svg" alt="" />
           }
         </button>
+      </div>
+    </div>
+    :
+    <div className='empty-cart-container'>
+      <div className='empty-cart'>
+        <img src="/general/empty-cart.jpg" alt="" />
+        <h3>Your cart is empty</h3>
+        <p>Let's add some items</p>
+        <NavLink to='/products/6'><button>Explore Shop</button></NavLink>
       </div>
     </div>
   )

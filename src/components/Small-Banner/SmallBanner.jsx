@@ -19,7 +19,7 @@ export default function SmallBanner() {
         <NavLink to='products/5'>
             <div className='image-container'>
               <div className="overlay"></div>
-              <img src="/small-banner/item2.jpg" alt="" />
+              <img loading='lazy' src="/small-banner/item2.jpg" alt="" />
               <div className='image-text'>
                   <h1>Sneakers</h1>
                   <p>Shop now</p>

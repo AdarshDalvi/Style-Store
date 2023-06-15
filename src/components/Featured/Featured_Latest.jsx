@@ -11,7 +11,7 @@ export default function Featured_Latest({data, heading}) {
     <div className='featured'>
       <div className='featured-heading'>
         <h1>{heading}</h1>
-        <NavLink to='products'>
+        <NavLink to='/products/6'>
           <p>view all</p>
         </NavLink>
       </div>

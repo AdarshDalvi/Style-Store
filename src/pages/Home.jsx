@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import {getAllProducts} from '../utils/api'
 import FeatureSkeleton from '../components/Skeleton/FeatureSkeleton/FeatureSkeleton'
 import SomethingWentWrong from '../components/SomethingWentWrong/SomethingWentWrong'
+import { useNavigate } from 'react-router-dom'
 
 export default function Home() {
 
@@ -15,6 +16,8 @@ export default function Home() {
   useEffect(()=>{
     getProducts();
   },[])
+
+  const navigate = useNavigate()
 
 
   const getProducts= async()=>{
@@ -38,7 +41,7 @@ export default function Home() {
             <h2>10% OFF Discount Coupons</h2>
             <p>Subscribe us to get 10% OFF on all purchases</p>
           </div>
-          <button>email me</button>
+          <button onClick={()=>navigate('/contact')}>Contact Us</button>
         </div>
         <h1><span>10</span>% OFF</h1>
       </div>
