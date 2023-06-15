@@ -11,7 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { nanoid } from '@reduxjs/toolkit'
 import SingleProductSkeleton from '../components/Skeleton/SingleProductSkeleton/SingleProductSkeleton'
-import SomethingWentWrong from '../components/SomethingWentWrong/SomethingWentWrong'
+import SomethingWentWrong from '../components/SomethingWentWrong/SomethingWrong'
 
 export default function SingleProduct() {
 

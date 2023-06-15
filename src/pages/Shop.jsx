@@ -9,7 +9,7 @@ import DialogModal from '../components/DialogModal/DialogModal'
 import isEqual from 'lodash/isEqual';
 import { getAllProducts } from '../utils/api'
 import Skeleton from '../components/Skeleton/Skeleton'
-import SomethingWentWrong from '../components/SomethingWentWrong/SomethingWentWrong'
+import SomethingWentWrong from '../components/SomethingWentWrong/SomethingWrong'
 import { useParams } from 'react-router-dom'
 
 export default function Shop() {
@@ -173,7 +173,7 @@ export default function Shop() {
         {
           loading 
           ? <div className='list'> <Skeleton count={6} type='card'/> </div>
-          : !loading && (productData == null || productData ===[])  
+          : !loading && (productData == null || productData ==[])  
           ? <SomethingWentWrong buttonFunction={()=>getData({})}/>
           : <>
             <h3 style={{padding:'0 15px', marginTop:'1em'}}>{productData.length} Items</h3>

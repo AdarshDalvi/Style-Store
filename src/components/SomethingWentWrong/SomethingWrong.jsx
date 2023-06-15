@@ -1,5 +1,5 @@
 import React from 'react'
-import './SomethingWentWrong.scss'
+import './SomethingWrong.scss'
 
 export default function SomethingWentWrong({buttonFunction}) {
   return (

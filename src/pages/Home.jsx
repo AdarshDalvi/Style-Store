@@ -5,7 +5,7 @@ import Featured_Latest from '../components/Featured/Featured_Latest'
 import { useEffect, useState } from 'react'
 import {getAllProducts} from '../utils/api'
 import FeatureSkeleton from '../components/Skeleton/FeatureSkeleton/FeatureSkeleton'
-import SomethingWentWrong from '../components/SomethingWentWrong/SomethingWentWrong'
+import SomethingWentWrong from '../components/SomethingWentWrong/SomethingWrong'
 import { useNavigate } from 'react-router-dom'
 
 export default function Home() {
@@ -47,14 +47,14 @@ export default function Home() {
       </div>
       { (loading && products==null)
         ?<FeatureSkeleton/>
-        :(!loading && (products==null || products===[]))
+        :(!loading && (products==null || products==[]))
         ?<SomethingWentWrong buttonFunction={getProducts}/>
         : <Featured_Latest data={products} heading='Featured products'/>
       }
       <SmallBanner/>
       { (loading && products==null)
         ?<FeatureSkeleton/>
-        :(!loading && (products==null || products===[]))
+        :(!loading && (products==null || products==[]))
         ?<SomethingWentWrong buttonFunction={getProducts}/>
         : <Featured_Latest data={products} heading='Latest products'/>
       }
