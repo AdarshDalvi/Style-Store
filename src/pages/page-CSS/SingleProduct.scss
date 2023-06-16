@@ -153,6 +153,10 @@
                     font-weight: 500;
                     background-color: transparent;
                     border: 1px solid black;
+                    
+                    &:hover{
+                        background-color: transparent;
+                    }
                 }
                 
                 .cart-icon{
