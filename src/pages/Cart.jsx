@@ -35,7 +35,7 @@ export default function Cart() {
           <div className='summary-details'>
             <div className='summary-detail-subheading'>
               <p>SUBTOTAL</p>
-              <p>$ {subtotal}</p>
+              <p>₹ {subtotal}</p>
             </div>
             <p className='summary-description'>
               The subtotal reflects the total price of your order, 
