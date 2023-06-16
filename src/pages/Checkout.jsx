@@ -171,7 +171,7 @@ export default function Checkout() {
           </p>
           <div className='cart-summary-order'>
             <h3>Order total:</h3>
-            <h3>${total}</h3>
+            <h3>₹{total}</h3>
           </div>
         </div>
         <button onClick={handleSubmit(handlePayment)}>
