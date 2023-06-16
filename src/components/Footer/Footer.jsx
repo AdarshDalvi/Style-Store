@@ -18,11 +18,7 @@ export default function Footer() {
         </div>
         <div className="item">
           <h2>About</h2>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime aut voluptas dolorem non a quo. Deserunt, architecto iste atque, nesciunt recusandae vitae aliquam veritatis, voluptatibus cumque ea fugit qui quas minima dolor? Quasi, atque molestiae?</p>
-        </div>
-        <div className="item">
-          <h2>Contact</h2>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga itaque quo recusandae quasi quia temporibus in quae ullam aut amet? Quis, sapiente perspiciatis delectus, voluptatum ullam est ad quod, illo magnam ipsum accusantium animi.</p>
+          <p>Welcome to Stylish Store! We specialize in offering a fantastic selection of Nike shoes. As avid enthusiasts of athletic footwear, we understand the importance of finding the perfect pair that not only matches your style but also supports your active lifestyle.</p>
         </div>
       </div>
       <div className="bottom">

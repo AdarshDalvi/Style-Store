@@ -12,15 +12,18 @@ export default function Banner() {
   const slides = [
     { 
       url: '/slider/slide-1.png',
-      topText: 'Jordan Shoes'
+      topText: 'Jordan Shoes',
+      link:'1'
     },
     { 
       url: '/slider/slide-2.jpg',
-      topText: 'Stylish Sneakers'
+      topText: 'Stylish Sneakers',
+      link:'5'
     },
     { 
       url: '/slider/slide-3.png',
-      topText: 'Running Shoes'
+      topText: 'Running Shoes',
+      link:'3'
     }
   ]
 
@@ -33,7 +36,7 @@ export default function Banner() {
 
   const element1 = (
     <div className="element1">
-      <div className='element-container span2' onClick={()=>navigateTo('1')}>
+      <div className='element-container span2' onClick={()=>navigateTo(slides[0].link)}>
         <img src={slides[0].url} alt="" />
         <div className='overlay'></div>
         <div className='image1-text'>
@@ -41,7 +44,7 @@ export default function Banner() {
           <p>shop now</p>
         </div>
       </div>
-      <div className='element-container' onClick={()=>navigateTo('5')}>
+      <div className='element-container' onClick={()=>navigateTo(slides[1].link)}>
         <img src={slides[1].url} alt="" />
         <div className='overlay'></div>
         <div className='image2-text'>
@@ -49,7 +52,7 @@ export default function Banner() {
           <p>shop now</p>
         </div>
       </div>
-      <div className='element-container' onClick={()=>navigateTo('3')}>
+      <div className='element-container' onClick={()=>navigateTo(slides[2].link)}>
         <img src={slides[2].url} alt="" />
         <div className='overlay'></div>
         <div className='image2-text'>
@@ -60,7 +63,10 @@ export default function Banner() {
     </div>
   )
   
-  const  handleNext = useCallback(()=>{
+  const  handleNext = useCallback((event,auto)=>{
+    if(auto){
+      event.stopPropagation()
+    }
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
     setCurrentIndex(prevIndex=>newIndex);
@@ -71,14 +77,15 @@ export default function Banner() {
       clearTimeout(timerRef.current)
     }
     timerRef.current =  setTimeout(()=>{
-      handleNext()
+      handleNext('',false)
     },3000)
 
     return ()=> clearTimeout(timerRef.current)
   },[handleNext])
 
 
-  function handlePrev(){
+  function handlePrev(event){
+    event.stopPropagation()
     const isLastSlide = currentIndex === slides.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(prevIndex=>newIndex);
@@ -87,17 +94,15 @@ export default function Banner() {
   return (
     <>
       {element1}
-      <div>
-        <div className='slider'>
-          <div className='overlay'></div>
-          <GrFormPrevious className='nav-icons next' onClick={handleNext}/>
-          <img src={slides[currentIndex].url} alt="" />
-          <div className='slider-text'>
-            <h1>{slides[currentIndex].topText}</h1>
-            <p>shop now</p>
-          </div>
-          <GrFormNext className='nav-icons previous' onClick={handlePrev}/>
+      <div className='slider' onClick={()=>navigateTo(slides[currentIndex].link)}>
+        <div className='overlay'></div>
+        <GrFormPrevious className='nav-icons next' onClick={handlePrev}/>
+        <img src={slides[currentIndex].url} alt="" />
+        <div className='slider-text'>
+          <h1>{slides[currentIndex].topText}</h1>
+          <p>shop now</p>
         </div>
+        <GrFormNext className='nav-icons previous' onClick={(event)=>handleNext(event,true)}/>
       </div>
     </>
   )
