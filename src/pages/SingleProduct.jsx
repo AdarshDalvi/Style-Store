@@ -117,7 +117,7 @@ export default function SingleProduct() {
         </div>
         <div className='product-info'>
           <h2>{productDetails?.attributes.name}</h2>
-          <p className='price'>MRP : ${productDetails?.attributes.price}</p>
+          <p className='price'>MRP : ₹{productDetails?.attributes.price}</p>
           <p className='inc'>{`(incl. of taxes)`}</p>
           <div className='size'>
             <p>Select Size :</p>

@@ -63,7 +63,7 @@ export default function FavoriteCard({item}) {
           })}
         </select>
       </div>
-      <p>Price: ${item?.attributes?.price}</p>
+      <p>Price: ₹{item?.attributes?.price}</p>
       <button className='add-to-cart' onClick={moveToCart}>Move to Cart</button>
     </div>
   )

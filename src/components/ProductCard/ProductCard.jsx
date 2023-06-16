@@ -58,7 +58,7 @@ export default function ProductCard({ data,className=''}) {
             }
           </div>
           <div className='product-price'>
-            <p>${product.price}</p>
+            <p>₹{product.price}</p>
             <h4 className='og_price'>$<span>{product.original_price}</span> </h4>
             <p>{discount(product.original_price, product.price)}% off</p>
           </div>

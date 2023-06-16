@@ -68,7 +68,7 @@ export default function CartCard({item}) {
       </div>
       <div className='card-actions'>
         <p className='product-price'>
-          ${item.attributes.price}
+        ₹{item.attributes.price}
         </p>
         <RiDeleteBinLine className='delete-item' onClick={()=>dispatch(removeFromCart(item.cartItemId))}/>
       </div>
