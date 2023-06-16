@@ -16,7 +16,7 @@ export const getAllProducts = async(ENDPOINT) =>{
 }
 
 export const makePaymentRequest = async (endpoint, payload) => {
-    const res = await fetch(`${API_URL}${endpoint}`, {
+    const res = await fetch(`${API_URL}/api${endpoint}`, {
         method: "POST",
         headers: {
             Authorization: "Bearer " + STRAPI_API_TOKEN,
