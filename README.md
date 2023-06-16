@@ -49,4 +49,15 @@ Stylish Store is developed using React.js for the frontend, React Router for rou
 
 Stylish store is a feature-rich React application that provides a comprehensive online shopping experience for Nike shoes. With its responsive design, extensive catalog, and secure checkout process, it offers users an engaging and seamless experience. The project utilizes various frontend technologies, including React.js, React Router, and Redux, while leveraging the Strapi backend CMS for efficient content management. Feel free to explore the demo and refer to the documentation for installation instructions.
 
-Live Demo: https://stylish-store.vercel.app
+## Live Demo: https://stylish-store.vercel.app
+
+## Store Images:
+![Alt Text](https://res.cloudinary.com/dov0rgbvs/image/upload/v1686919968/Screenshot_2023-06-16_182122_xdsjq3.png)
+
+![Alt Text](https://res.cloudinary.com/dov0rgbvs/image/upload/v1686920456/store-2_wfwhty.png)
+
+![Alt Text](https://res.cloudinary.com/dov0rgbvs/image/upload/v1686920619/store-3_nezuxa.png)
+
+![Alt Text](https://res.cloudinary.com/dov0rgbvs/image/upload/v1686920735/mobile-store_f8imsf.png) 
+
+![Alt Text](https://res.cloudinary.com/dov0rgbvs/image/upload/v1686920847/mobile-image_oe7ppa.png)
