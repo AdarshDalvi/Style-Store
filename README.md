@@ -1,6 +1,6 @@
-# Nike Shoes Store Website
+# Stylish Store 
 
-The Nike Shoes Store website is a project developed using React.js for the frontend, React Router for routing and navigation, Redux for global state management, and Strapi as the backend CMS (Content Management System). The website is designed to simulate an online store where users can browse and purchase Nike shoes. It includes features such as a product catalog, detailed product information, responsive design, cart functionality, checkout process with the Stripe payment gateway, filters, search, and an admin dashboard provided by Strapi.
+Stylish Store is developed using React.js for the frontend, React Router for routing and navigation, Redux for global state management, and Strapi as the backend CMS (Content Management System). The website is designed to simulate an online store where users can browse and purchase Nike shoes. It includes features such as a product catalog, detailed product information, responsive design, cart functionality, checkout process with the Stripe payment gateway, filters, search, and an admin dashboard provided by Strapi.
 
 ## Technologies Used
 
@@ -33,7 +33,7 @@ The Nike Shoes Store website is a project developed using React.js for the front
    - Set up Strapi and create content types for managing products and additional data.
 4. Configure the frontend:
    - Modify configuration files to connect the frontend with the Strapi API.
-5. Start the development server: Run `npm start`.
+5. Start the development server: Run `npm run dev`.
 6. Access the website by opening a web browser and navigating to the provided URL.
 
 ## Future Improvements
@@ -47,7 +47,6 @@ The Nike Shoes Store website is a project developed using React.js for the front
 
 ## Conclusion
 
-The Nike Shoes Store website is a feature-rich React application that provides a comprehensive online shopping experience for Nike shoes. With its responsive design, extensive catalog, and secure checkout process, it offers users an engaging and seamless experience. The project utilizes various frontend technologies, including React.js, React Router, and Redux, while leveraging the Strapi backend CMS for efficient content management. Feel free to explore the demo and refer to the documentation for installation instructions.
+Stylish store is a feature-rich React application that provides a comprehensive online shopping experience for Nike shoes. With its responsive design, extensive catalog, and secure checkout process, it offers users an engaging and seamless experience. The project utilizes various frontend technologies, including React.js, React Router, and Redux, while leveraging the Strapi backend CMS for efficient content management. Feel free to explore the demo and refer to the documentation for installation instructions.
 
-Live Demo: [Link]
-Documentation: [Link]
+Live Demo: https://stylish-store.vercel.app
