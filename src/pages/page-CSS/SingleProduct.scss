@@ -149,10 +149,15 @@
                     background-color: rgba($color: #000000, $alpha: 0.8);
                 }
 
-                .add-to-wishlist{
+                #add-to-wishlist{
                     font-weight: 500;
                     background-color: transparent;
                     border: 1px solid black;
+                    cursor: pointer;
+                }
+
+                #add-to-wishlist:hover, #add-to-wishlist:focus{
+                    background-color: rgba($color: #d8d8d8, $alpha: 0.8);
                 }
                 
                 .cart-icon{
@@ -160,9 +165,6 @@
                     margin-left: 0.5em;
                 }
 
-                .add-to-wishlist:hover, .add-to-wishlist:focus{
-                    background-color: rgba($color: #000000, $alpha: 0.05);
-                }
 
                 .btn-disabled{
                     pointer-events: none;

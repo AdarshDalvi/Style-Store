@@ -150,8 +150,8 @@ export default function SingleProduct() {
             </button>
             {
               favorites.find(favItem=> favItem.id=== productDetails?.id) === undefined
-              ?<button className='add-to-wishlist' onClick={handleAddToFavorite}> Add to Whishlist <MdFavoriteBorder className='cart-icon'/> </button>
-              :<button className='add-to-wishlist' onClick={handleRemoveFromFavorite}> Remove from Whishlist <MdFavorite className='cart-icon'/> </button>
+              ?<button id='add-to-wishlist' onClick={handleAddToFavorite}> Add to Whishlist <MdFavoriteBorder className='cart-icon'/> </button>
+              :<button id='add-to-wishlist' onClick={handleRemoveFromFavorite}> Remove from Whishlist <MdFavorite className='cart-icon'/> </button>
             }
           </div>
           <h3>
