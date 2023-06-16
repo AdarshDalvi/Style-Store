@@ -66,7 +66,7 @@ export default function Shop() {
     }
     try{
       setLoading(true)
-      let url = `/products?populate=*&filters[categories][id][$eq]=${parseInt(category)}`;
+      let url = `/api/products?populate=*&filters[categories][id][$eq]=${parseInt(category)}`;
       
       if (sort) {
         url += `&sort=price:${sort}`;
