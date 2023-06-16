@@ -23,7 +23,7 @@ export default function Home() {
   const getProducts= async()=>{
     try{
       setLoading(true)
-      const {data} = await getAllProducts('/products?populate=*')
+      const {data} = await getAllProducts('/api/products?populate=*')
       setData(prevProducts=>data) 
       setLoading(false)
     }catch(e){

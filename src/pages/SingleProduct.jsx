@@ -32,7 +32,7 @@ export default function SingleProduct() {
   const getProductDetails = async()=>{
     try{
       setLoading(true)
-      const {data} = await getAllProducts(`/products?filters[slug][$eq]=${slug}&populate=*`)
+      const {data} = await getAllProducts(`/api/products?filters[slug][$eq]=${slug}&populate=*`)
       const product = data?.[0]
       setProductDetails(prevDetails=> product)
       setImageData(prevData=>{
