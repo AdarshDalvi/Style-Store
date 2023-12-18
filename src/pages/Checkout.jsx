@@ -106,7 +106,6 @@ export default function Checkout() {
               }}
               errors={errors.cname?.message}
             />
-<<<<<<< HEAD
             <FormInput
               id={2}
               name='cemail'
@@ -181,23 +180,6 @@ export default function Checkout() {
               loading && <img className='spinner' src="/general/spinner.svg" alt="" />
             }
           </button>
-=======
-            {errors.caddress?.message  && <span>{errors.caddress.message}</span>}
-          </div>
-        </form>
-      </div>
-      <div className='cart-summary'>
-        <h3>Cart Summary</h3>
-        <div className='cart-summary-container'>
-          <p>
-            Order total  reflects the total price of your order, 
-            including duties and taxes.
-          </p>
-          <div className='cart-summary-order'>
-            <h3>Order total:</h3>
-            <h3>₹{total}</h3>
-          </div>
->>>>>>> 47e21b7212ad33cd8d451115ddafe5cdd47b3758
         </div>
       </div>
       :
