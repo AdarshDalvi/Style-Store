@@ -87,13 +87,13 @@ export default function Shop() {
 
   const setCategoryImageIndex = (categoryId) => {
     if (categoryId === '1') {
-      setCategoryIndex(1)
+      setCategoryIndex(0)
     } else if (categoryId === '2') {
-      setCategoryIndex(2)
+      setCategoryIndex(1)
     } else if (categoryId === '3') {
-      setCategoryIndex(3)
+      setCategoryIndex(2)
     } else if (categoryId === '4') {
-      setCategoryIndex(4)
+      setCategoryIndex(3)
     }
   }
 
