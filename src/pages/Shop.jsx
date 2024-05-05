@@ -50,7 +50,7 @@ export default function Shop() {
     if (categoryId !== '' || categoryId === undefined || categoryId == null) {
       getData(categoryId)
     } else {
-      getData('3')
+      getData('1')
     }
     setCategoryImageIndex(categoryId)
 
@@ -62,7 +62,7 @@ export default function Shop() {
 
   const getData = async (category, sort = '', searchQuery = '') => {
     if (category === '') {
-      category = '3'
+      category = '1'
     }
     try {
       setLoading(true)
@@ -86,14 +86,14 @@ export default function Shop() {
   }
 
   const setCategoryImageIndex = (categoryId) => {
-    if (categoryId === '3') {
-      setCategoryIndex(0)
-    } else if (categoryId === '4') {
+    if (categoryId === '1') {
       setCategoryIndex(1)
-    } else if (categoryId === '5') {
+    } else if (categoryId === '2') {
       setCategoryIndex(2)
-    } else if (categoryId === '6') {
+    } else if (categoryId === '3') {
       setCategoryIndex(3)
+    } else if (categoryId === '4') {
+      setCategoryIndex(4)
     }
   }
 

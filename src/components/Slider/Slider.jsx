@@ -13,17 +13,17 @@ export default function Banner() {
     {
       url: '/slider/slide-1.png',
       topText: 'Jordan Shoes',
-      link: '4'
+      link: '2'
     },
     {
       url: '/slider/slide-2.jpg',
       topText: 'Stylish Sneakers',
-      link: '5'
+      link: '3'
     },
     {
       url: '/slider/slide-3.png',
       topText: 'Running Shoes',
-      link: '6'
+      link: '4'
     }
   ]
 

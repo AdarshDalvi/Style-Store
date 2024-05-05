@@ -5,7 +5,7 @@ export default function Filter({ filters, handleOnChange }) {
   let defaultFilters = { ...filters }
   for (let key in defaultFilters) {
     if (key === 'category' && defaultFilters[key] === '') {
-      defaultFilters[key] = '3'
+      defaultFilters[key] = '1'
     }
   }
 
@@ -17,8 +17,8 @@ export default function Filter({ filters, handleOnChange }) {
           type="radio"
           id="all"
           name="category"
-          value='3'
-          checked={defaultFilters.category === '3'}
+          value='1'
+          checked={defaultFilters.category === '1'}
           onChange={handleOnChange}
         />
         <label htmlFor="all"> All </label>
@@ -27,8 +27,8 @@ export default function Filter({ filters, handleOnChange }) {
           type="radio"
           id="jordan"
           name="category"
-          value='4'
-          checked={defaultFilters.category === '4'}
+          value='2'
+          checked={defaultFilters.category === '2'}
           onChange={handleOnChange}
         />
         <label htmlFor="jordan"> Jordan</label>
@@ -37,8 +37,8 @@ export default function Filter({ filters, handleOnChange }) {
           type="radio"
           id="sneakers"
           name="category"
-          value='5'
-          checked={defaultFilters.category === '5'}
+          value='3'
+          checked={defaultFilters.category === '3'}
           onChange={handleOnChange}
         />
         <label htmlFor="sneakers"> Sneakers</label>
@@ -47,8 +47,8 @@ export default function Filter({ filters, handleOnChange }) {
           type="radio"
           id="running"
           name="category"
-          value='6'
-          checked={defaultFilters.category === "6"}
+          value='4'
+          checked={defaultFilters.category === "4"}
           onChange={handleOnChange}
         />
         <label htmlFor="running"> Running shoes</label>
