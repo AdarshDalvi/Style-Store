@@ -55,7 +55,7 @@ export default function Header() {
 
           <nav className={`${showNavbar && 'active-nav'}`}>
             <NavLink to='.' onClick={() => setShowNavbar(prevValue => false)} className={({ isActive }) => isActive ? 'activeLink' : null}>Home</NavLink>
-            <NavLink to='products/3' onClick={() => setShowNavbar(prevValue => false)} className={({ isActive }) => isActive ? 'activeLink' : null}>Shop</NavLink>
+            <NavLink to='products/1' onClick={() => setShowNavbar(prevValue => false)} className={({ isActive }) => isActive ? 'activeLink' : null}>Shop</NavLink>
             <NavLink to='about' onClick={() => setShowNavbar(prevValue => false)} className={({ isActive }) => isActive ? 'activeLink' : null}>About</NavLink>
             <NavLink to='contact' onClick={() => setShowNavbar(prevValue => false)} className={({ isActive }) => isActive ? 'activeLink' : null}>Contact</NavLink>
           </nav>
