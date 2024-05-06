@@ -5,7 +5,7 @@ export default function SmallBanner() {
   return (
     <div className='small-banner-container'>
 
-      <NavLink to='products/4'>
+      <NavLink to='products/2'>
         <div className='image-container'>
           <div className="overlay"></div>
           <img src="/small-banner/item1.jpg" alt="" />
@@ -16,7 +16,7 @@ export default function SmallBanner() {
         </div>
       </NavLink>
 
-      <NavLink to='products/5'>
+      <NavLink to='products/3'>
         <div className='image-container'>
           <div className="overlay"></div>
           <img loading='lazy' src="/small-banner/item2.jpg" alt="" />

@@ -52,7 +52,7 @@ export default function Cart() {
           <img src="/general/empty-cart.jpg" alt="" />
           <h3>Your cart is empty</h3>
           <p>Let's add some items</p>
-          <NavLink to='/products/3'><button>Explore Shop</button></NavLink>
+          <NavLink to='/products/1'><button>Explore Shop</button></NavLink>
           {favorites.length > 0 && <NavLink to='/favorite'><button>Add from Favorites</button></NavLink>}
         </div>
       </div>

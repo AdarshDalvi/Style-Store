@@ -23,7 +23,7 @@ export default function Favorite() {
           <h3>Your wishlist is empty</h3>
           <p>Add items that you like to your wishlist. Review them anytime and easily move them to the cart.</p>
           <img src="/general/wishlist.png" alt="" />
-          <NavLink to='/products/3'> <button>Continue Shopping</button> </NavLink>
+          <NavLink to='/products/1'> <button>Continue Shopping</button> </NavLink>
         </div>
       </div>
   )
